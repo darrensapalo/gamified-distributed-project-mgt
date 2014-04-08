@@ -25,9 +25,29 @@
 	</div>
 	<div class="row">
 		<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-			<li>Your content goes here</li>
-			<li>Your content goes here</li>
-			<li>Your content goes here</li>
+			<li>
+				<div class="panel radius">
+					<h5>Design analysis</h5>
+					<p>Study the design of the open source PHP frameworks.</p>
+					<span class="default label">15 days left</span>
+					<span class="red label">colored label</span>
+				</div>
+			</li>
+			<li>
+				<div class="panel radius">
+					<h5>Test prototype</h5>
+					<p>
+					Allow the determined target users to use the prototype and apply contextual inquiry user research method.
+					</p>
+					<span class="alert label">3 days left</span>
+				</div>
+			</li>
+			<li>
+				<div class="panel radius">
+					<h5>Design analysis</h5>
+					<p>Study the design of the open source PHP frameworks.</p>
+				</div>
+			</li>
 			<li>Your content goes here</li>
 			<li>Your content goes here</li>
 			<li>Your content goes here</li>
