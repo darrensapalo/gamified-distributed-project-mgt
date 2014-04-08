@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Foundation | Welcome</title>
 	<link rel="stylesheet" href="css/foundation.css" />
+	<link rel="stylesheet" href="css/my.css" />
 	<script src="js/vendor/modernizr.js"></script>
 </head>
 <body>
@@ -30,7 +31,7 @@
 					<h5>Design analysis</h5>
 					<p>Study the design of the open source PHP frameworks.</p>
 					<span class="default label">15 days left</span>
-					<span class="red label">colored label</span>
+					<span class="blue label">design</span>
 				</div>
 			</li>
 			<li>
@@ -39,7 +40,8 @@
 					<p>
 					Allow the determined target users to use the prototype and apply contextual inquiry user research method.
 					</p>
-					<span class="alert label">3 days left</span>
+					<span class="default label">3 days left</span>
+					<span class="orange label">user research</span>
 				</div>
 			</li>
 			<li>

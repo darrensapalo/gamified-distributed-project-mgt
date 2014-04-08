@@ -25,6 +25,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="row">
 		<div class="large-4 medium-4 small-4 columns">
 			<h4>Tasks</h4>

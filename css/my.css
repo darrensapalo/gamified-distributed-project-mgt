@@ -2,3 +2,35 @@
 	display: table;
 	margin-bottom: 5px;
 }
+
+.default {
+	background-color: #777;
+}
+
+.red {
+	background-color: #cc3333;
+}
+
+.green {
+	background-color: #449944;
+}
+
+.blue {
+	background-color: #5555aa;
+}
+
+.yellow {
+	background-color: #E6B010;
+}
+
+.orange {
+	background-color: #E66510;
+}
+
+.black {
+	background-color: #333;
+}
+
+p {
+	font-size: 12px;
+}
