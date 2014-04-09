@@ -12,6 +12,7 @@
 	<script>
 	$(function() {
 		$(".desc").hide();
+		
 		$( ".tasks" ).sortable({
 			helper: "clone",
 			placeholder: "ui-state-highlight .task-placeholder ",
@@ -28,7 +29,7 @@
 
 	<div class="row">
 		<div class="large-12 columns">
-			<h1>My Tasks</h1>
+			<h1>CSC755M</h1>
 			<hr>
 		</div>
 	</div>	
@@ -96,5 +97,9 @@
 			</li>
 		</ul>
 	</div>
+	<script src="js/foundation.min.js"></script>
+	<script>
+		$(document).foundation();
+	</script>
 </body>
 </html>
