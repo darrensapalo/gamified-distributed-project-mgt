@@ -3,4 +3,5 @@
 	<title>Tara | Let's work</title>
 	<link rel="stylesheet" href="<?PHP echo base_url(); ?>css/foundation.css" />
 	<link rel="stylesheet" href="<?PHP echo base_url(); ?>css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?PHP echo base_url(); ?>css/my.css" />
 	<script src="<?PHP echo base_url(); ?>js/vendor/modernizr.js"></script>
