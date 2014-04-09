@@ -12,6 +12,7 @@
 			<li class="active"><a href="#">Register</a></li>
 			<li>
 				<?php echo anchor('login', 'Log in'); ?>
+
 			</li>
 			
 		</ul>
@@ -23,14 +24,17 @@
 				<ul class="dropdown">
 					<li>
 						<?php echo anchor('project', 'CSC755M'); ?>
+
 					</li>
 				</ul>
 			</li>
 			<li>
 				<?php echo anchor('people', 'People'); ?>
+
 			</li>
 			<li>
 				<?php echo anchor('tasks', 'My tasks'); ?>
+				
 			</li>
 		</ul>
 	</section>

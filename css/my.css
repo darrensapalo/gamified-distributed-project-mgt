@@ -1,5 +1,5 @@
 .label{
-	display: table;
+	/*display: table;*/
 	margin-bottom: 5px;
 }
 
@@ -33,4 +33,12 @@
 
 p {
 	font-size: 12px;
+}
+
+.grid-column{
+
+}
+
+div.panel.task{
+	background-color: #fff;
 }

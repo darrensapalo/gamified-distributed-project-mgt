@@ -1,10 +1,15 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html lang="en">
 <head>
-<?PHP $this->load->view('common/header');  ?>
+	<?PHP $this->load->view('common/header');  ?>
+	<script>
+	$(function() {
+		$(".task").draggable({ opacity: 0.7, helper: "clone" });
+	});
+	</script>
 </head>
 <body>
-<?PHP $this->load->view('common/nav'); ?>
+	<?PHP $this->load->view('common/nav'); ?>
 
 	<div class="row">
 		<div class="large-12 columns">
@@ -20,41 +25,42 @@
 		</div>
 	</div>
 	<div class="row">
-		<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+
+		<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3">
+
 			<li>
-				<div class="panel radius">
-					<h5>Design analysis</h5>
-					<p>Study the design of the open source PHP frameworks.</p>
-					<span class="default label">15 days left</span>
-					<span class="blue label">design</span>
+				<div class="panel radius grid-column">
+					<h4>To-do</h4>
+					<div class="panel task">
+						<h6>Design analysis</h6>
+						<p style='hide'>Study the design of the open source PHP frameworks.</p>
+						<span class="default label">15d</span>
+						<span class="blue label"></span>
+					</div>
 				</div>
 			</li>
 			<li>
-				<div class="panel radius">
-					<h5>Test prototype</h5>
-					<p>
-					Allow the determined target users to use the prototype and apply contextual inquiry user research method.
-					</p>
-					<span class="default label">3 days left</span>
-					<span class="orange label">user research</span>
+				<div class="panel radius grid-column">
+					<h4>Doing</h4>
+					<div class="panel task">
+						<h6>Test prototype</h6>
+						<p>
+							Allow the determined target users to use the prototype and apply contextual inquiry user research method.
+						</p>
+						<span class="default label">3d</span>
+						<span class="orange label"></span>
+					</div>
 				</div>
 			</li>
 			<li>
-				<div class="panel radius">
-					<h5>Design analysis</h5>
-					<p>Study the design of the open source PHP frameworks.</p>
+				<div class="panel radius grid-column">
+					<h4>Done</h4>
 				</div>
 			</li>
-			<li>Your content goes here</li>
-			<li>Your content goes here</li>
-			<li>Your content goes here</li>
 		</ul>
 	</div>
-
-	<script src="js/vendor/jquery.js"></script>
-	<script src="js/foundation.min.js"></script>
 	<script>
-		$(document).foundation();
+	$(document).foundation();
 	</script>
 </body>
 </html>
