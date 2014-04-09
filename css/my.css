@@ -1,5 +1,5 @@
 .label{
-	/*display: table;*/
+	display: inline-block;
 	margin-bottom: 5px;
 }
 
@@ -34,11 +34,24 @@
 p {
 	font-size: 12px;
 }
-
-.grid-column{
-
+p.deadline{
+	margin-bottom: 0px;
 }
 
 div.panel.task{
 	background-color: #fff;
+	max-width: 240px;
+}
+
+.ui-state-hover{
+	background: #eee;
+	border-color: #aaa;
+}
+
+div.board{
+	min-height: 300px;
+}
+
+h6{
+	font-weight: bold;
 }
