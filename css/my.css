@@ -114,3 +114,19 @@ div a.button{
 div.space{
 	margin-bottom: 30px;
 }
+
+.hide-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+a.input-text{
+	color: #444;
+	margin-top: -100px;
+}
+
+.editableform .form-control{
+	min-width: 260px;
+	width: 260px;
+}

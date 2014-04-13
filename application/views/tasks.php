@@ -6,9 +6,8 @@
 
 	<script>
 	$(function() {
-		$(".desc").hide();
-		$("div.options").hide();
-		
+		$(".options").hide();
+
 		$( ".tasks" ).sortable({
 			helper: "clone",
 			placeholder: "ui-state-highlight .task-placeholder ",
@@ -21,6 +20,24 @@
 			$( this ).toggleClass( "disabled" );
 		});
 
+		$( "#toggleDeadline" ).click(function() {
+			$( ".desc" ).toggle("fast");
+			$( this ).toggleClass( "disabled" );
+		});
+
+		$( "#toggleTags" ).click(function() {
+			$( ".label:not(.tag-select)" ).each(function(index) {
+				var currentText = $( this ).text();
+				if (currentText != ""){
+					$( this ).data("text", $( this ).text());
+					$( this ).text("");
+				}else{
+					$( this ).text($( this ).data("text"));
+				}
+			});
+			$( this ).toggleClass( "disabled" );
+		});
+
 		$( ".tag-select" ).click(function() {
 			$( this ).toggleClass( "selected" );
 		});
@@ -29,7 +46,6 @@
 			$( this ).children( "div[class='options']" ).toggle("fast");
 		});
 
-		$.fn.editable.defaults.mode = 'inline';
 		$('.input-text').editable();
 	});
 
@@ -39,18 +55,7 @@
 </head>
 <body>
 	<?PHP $this->load->view('common/nav'); ?>
-	<div id="selectTags" class="reveal-modal tiny" data-reveal>
-		<h2><task id="taskName">Design analysis</task></h2>
-		<p>Click which labels you wish to assign to this task.</p>
-		<p><span class="orange label tag-select">Changes and revisions</span></p>
-		<p><span class="red label tag-select">Bugs</span></p>
-		<p><span class="yellow label tag-select">Design</span></p>
-		<p><span class="blue label tag-select">Code</span></p>
-		<p><span class="green label tag-select">Literature Review</span></p>
-		<div class="space"></div>
-		<a class="button small">Assign tags</a>
-		<a class="close-reveal-modal" >&#215;</a>
-	</div>
+	<?PHP $this->load->view('common/tag-selection'); ?>
 	<div class="row">
 		<div class="large-12 columns">
 			<h1><i class="fa fa-tasks"></i>CSC755M</h1>
@@ -62,7 +67,8 @@
 			<div class="panel">
 				<p>On this page, you can view the list of tasks you are currently assigned to.</p>
 				<p>Double click to open more options for a single task.</p>
-				<a href="#" id="toggleDesc" class="button small default disabled"><i class='fa fa-comment'></i>Descriptions</a>
+				<a href="#" id="toggleDesc" class="button small default"><i class='fa fa-comment'></i>Descriptions</a>
+				<a href="#" id="toggleTags" class="button small default disabled"><i class='fa fa-tags'></i>Tiny tags</a>
 				
 				
 			</div>
@@ -79,8 +85,10 @@
 							<div class="right">
 								<span class="blue label">Code</span>
 							</div>
-							<h6><a href="" class="input-text" data-type="text" data-url="/task/edit/" data-pk="1" data-id="name">Design analysis</a></h6>
-							<p class='desc'>Study the design of the open source PHP frameworks.</p>
+							<h6><a href="" class="input-text" data-type="text" data-url="/task/title-edit/" data-pk="1" data-id="name">Design analysis</a></h6>
+							<p class='desc'>
+								<a href="" class="input-text" data-type="textarea" data-url="/task/desc-edit/" data-pk="1" data-id="desc">Study the design of the open source PHP frameworks.</a>
+							</p>
 							<hr>
 							<p><i class='fa fa-clock-o'></i> 15 days left.</p>
 							<div class="options">
