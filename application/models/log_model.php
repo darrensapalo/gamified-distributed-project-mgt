@@ -18,8 +18,9 @@ class Log_Model extends CI_Model {
 
 	function get_recent()
 	{
+		$this->db->join("users", "users.id = logs.user_id");
 		$this->db->order_by('timestamp', 'desc');
-		return $this->db->get(self::TABLE_NAME, 10, 0)->result();
+		return $this->db->get(self::TABLE_NAME, 5, 0)->result();
 	}
 
 	function add()
@@ -28,7 +29,7 @@ class Log_Model extends CI_Model {
 
 		$this->user_id = 1;
 		$user = $this->account_model->get($this->user_id);
-		$this->description = $this->input->post("description");
+		$this->description = $user->user_id . " " . $this->input->post("description");
 		return $this->db->insert(self::TABLE_NAME, $this); 
 	}
 }

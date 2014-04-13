@@ -25,12 +25,12 @@ $(function() {
 
 			if (exp > 0){
 				experience = ( "<span class='label green'>" + exp + " experience</span> gained.<br />" );
-				log("Received " + exp + " experience.");
+				log("received " + exp + " experience.");
 				addExperience(exp);
 			}
 
 			$("#log-entries").prepend("<li><label>"+less_time+"</label></li><li class='log-info'>" + experience + "\'" + title + "\' moved to \'" + board + "\' board." + "</li>");
-			log("Moved task \'" + title + "\' to \'" + board + "\' board.");
+			log("moved task \'" + title + "\' to \'" + board + "\' board.");
 		}
 	});
 
