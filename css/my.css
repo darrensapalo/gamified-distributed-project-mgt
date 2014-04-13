@@ -121,9 +121,13 @@ div.space{
   overflow: hidden;
 }
 
-a.input-text{
+a.task-input{
 	color: #444;
 	margin-top: -100px;
+}
+
+.popover-title{
+	font-weight: bold;
 }
 
 .editableform .form-control{

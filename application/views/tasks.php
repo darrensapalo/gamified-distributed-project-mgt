@@ -46,7 +46,10 @@
 			$( this ).children( "div[class='options']" ).toggle("fast");
 		});
 
-		$('.input-text').editable();
+		$('.task-input').editable({
+		    url: '/task/edit',
+		    title: 'Enter username'
+		});
 	});
 
 
@@ -78,16 +81,16 @@
 		<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3">
 			<li>
 				<div class="panel radius board">
-					<h4>To-do</h4>
+					<h4>To-do<i class='fa fa-plus right button small'></i></h4>
 					<hr>
 					<div class="tasks">
 						<div class="panel task">
 							<div class="right">
 								<span class="blue label">Code</span>
 							</div>
-							<h6><a href="" class="input-text" data-type="text" data-url="/task/title-edit/" data-pk="1" data-id="name">Design analysis</a></h6>
+							<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="1" data-id="name">Design analysis</a></h6>
 							<p class='desc'>
-								<a href="" class="input-text" data-type="textarea" data-url="/task/desc-edit/" data-pk="1" data-id="desc">Study the design of the open source PHP frameworks.</a>
+								<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="1" data-id="desc">Study the design of the open source PHP frameworks.</a>
 							</p>
 							<hr>
 							<p><i class='fa fa-clock-o'></i> 15 days left.</p>

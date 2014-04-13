@@ -12,9 +12,9 @@ class Tasks extends CI_Controller {
 		
 	}
 
-	public function edit($id)
+	public function edit()
 	{
-		# code...
+		
 	}
 
 	public function delete($id)
