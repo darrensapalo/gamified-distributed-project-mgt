@@ -49,7 +49,7 @@ div.panel.task{
 }
 
 div.tasks{
-	min-height: 300px;
+	min-height: 450px;
 }
 
 .task-placeholder {
@@ -156,4 +156,12 @@ div.log.panel{
 
 ul.off-canvas-list{
 	background-color: #333;
+}
+
+span#experience{
+	color: #FFF;
+	font-size: 9px;
+	line-height: 20px;
+	text-align: left;
+	text-indent: 10px;
 }

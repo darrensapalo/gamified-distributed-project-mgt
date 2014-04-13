@@ -5,11 +5,13 @@ class Tasks extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model("task_model");
+		$this->load->model("log_model");
 	}
 
 	public function index()
 	{
 		$data['tasks'] = $this->task_model->get_all_by_board();
+		$data['logs'] = $this->log_model->get_recent();
 		$this->load->view('tasks', $data);
 	}
 

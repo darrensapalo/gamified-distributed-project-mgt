@@ -4,6 +4,7 @@
 	<?PHP $this->load->view('common/header');  ?>
 	<script src="<?PHP echo base_url(); ?>js/tara/common.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/tara/tasks.js"></script>
+	<script src="<?PHP echo base_url(); ?>js/tara/logs.js"></script>
 </head>
 <body>
 	<?PHP $this->load->view('common/nav'); ?>
@@ -23,14 +24,22 @@
 
 			<aside class="left-off-canvas-menu">
 				<ul class="off-canvas-list" id="log-entries">
-					<li><label>Logs</label></li>
+					
+					<?PHP
+					if (count($logs) == 0)
+						echo "<li><label>No recent logs</label></li>";
+					else
+					 	foreach ($logs as $log): ?>
+					<li><label><?PHP echo $log->timestamp; ?></label></li>
+					<li class='log-info'><?PHP echo $log->description; ?></li>
+					<?PHP endforeach; ?>
 				</ul>
 			</aside>
 
 			<section class="main-section">
 				<div class="large-12 columns">
 					<div class="progress small-12 large-12 success radius">
-						<span class="meter" id="experience" style="width: 0%"></span>
+						<span class="meter" id="experience" style="width: 0%"> Experience </span>
 					</div>
 				</div>
 				<div class="large-12 columns">
