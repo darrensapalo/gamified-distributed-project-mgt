@@ -1,7 +1,7 @@
 <?PHP 
 class Task_Model extends CI_Model {
-    const $TABLE_NAME   = 'tasks';
-    
+    const TABLE_NAME   = 'tasks';
+
     var $name           = '';
     var $desc           = '';
     var $deadline       = '';
@@ -13,29 +13,62 @@ class Task_Model extends CI_Model {
         parent::__construct();
     }
     
-    function get_tasks_of_project($project_id)
+    function get_all()
     {
-        $query = $this->db->get('entries', 10);
-        return $query->result();
+        $result = array();
+
+        $tasks = $this->db->get('tasks')->result();
+        foreach ($tasks as $task){
+
+            // Select the tags
+            $this->db->select('tags.name as tags, tags.color as color');
+            $this->db->join('tags', 'tags_id = tags.id');
+            $tags = $this->db->get_where('tasks_to_tags', array('task_id' => $task->id))->result_array();
+
+            // Add to tasks
+            $task->tags = $tags;
+            $result[] = $task;
+        }
+        return $result;
     }
 
-    function insert()
+    function get_all_by_board()
     {
-        $this->name     = $_POST['name']; // please read the below note
-        $this->desc     = $_POST['desc'];
-        $this->deadline = time();
-        $this->tags     = time();
+        $result = array('todo' => array(), 'doing' => array(), 'done' => array());
+        $tasks = $this->get_all();
 
-        $this->db->insert('entries', $this);
+
+        foreach($tasks as $task){
+            
+            // Checks remaining time left
+            $daysLeft = date('d', strtotime($task->deadline)) - date('d');
+            if ($daysLeft < 0){
+                $tasks->deadline_from_now = 'Overdue';
+            }else if ($daysLeft == 0){
+                $task->deadline_from_now = 'Due today';
+            }else{
+                $task->deadline_from_now = $daysLeft . " day" . (($daysLeft > 1) ? 's':'') . " left";
+            }
+
+            // Classify
+            if ($task -> board < 0)
+                $result['todo'][] = $task;
+            else if ($task -> board == 0)
+                $result['doing'][] = $task;
+            else
+                $result['done'][] = $task;
+        }
+        return $result;
     }
 
-    function update($type, $pk, $value)
-    {
-        $this->title   = $_POST['title'];
-        $this->content = $_POST['content'];
-        $this->date    = time();
+    /**
+     * Updates the database given a field and the new value
+     */
+    function update($id, $field, $value) {
+        $this -> db -> where('id', $id);
+        $data = array( $field => $value );
 
-        $this->db->update('entries', $this, array('id' => $_POST['id']));
+        $this -> db -> update(Task_Model::TABLE_NAME, $data);
     }
 
 }

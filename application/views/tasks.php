@@ -47,8 +47,7 @@
 		});
 
 		$('.task-input').editable({
-		    url: '/task/edit',
-		    title: 'Enter username'
+		    url: '/task/edit'
 		});
 	});
 
@@ -84,21 +83,28 @@
 					<h4>To-do<i class='fa fa-plus right button small'></i></h4>
 					<hr>
 					<div class="tasks">
+						<?PHP foreach ($tasks['todo'] as $task): ?>
 						<div class="panel task">
 							<div class="right">
-								<span class="blue label">Code</span>
+								<?PHP
+								// Display all tags
+								foreach ($task->tags as $tag){
+									echo "<span class='{$tag['color']} label'>{$tag['tags']}</span> ";
+								}
+								?>
 							</div>
-							<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="1" data-id="name">Design analysis</a></h6>
+							<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-id="name"><?PHP echo $task->name; ?></a></h6>
 							<p class='desc'>
-								<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="1" data-id="desc">Study the design of the open source PHP frameworks.</a>
+								<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-id="desc"><?PHP echo $task->desc; ?></a>
 							</p>
 							<hr>
-							<p><i class='fa fa-clock-o'></i> 15 days left.</p>
+							<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
 							<div class="options">
 								<hr>
 								<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small default"><i class='fa fa-tags'></i> Edit tags</a>
 							</div>
 						</div>
+						<?PHP endforeach; ?>
 					</div>
 				</div>
 			</li>
