@@ -51,7 +51,7 @@
 
 
 
-	</script>
+</script>
 </head>
 <body>
 	<?PHP $this->load->view('common/nav'); ?>
@@ -75,7 +75,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-2">
+		<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3">
 			<li>
 				<div class="panel radius board">
 					<h4>To-do</h4>
@@ -125,14 +125,17 @@
 					</div>
 				</div>
 			</li>
+			<li>
+				<div class="small-centered large-centered small-block-grid-2 medium-block-grid-2 large-block-grid-2">
+					<div class="panel radius board">
+						<h4>Done</h4>
+						<hr>
+						<div class="tasks"></div>
+					</div>
+				</div>
+			</li>
 		</ul>
-		<div class="small-centered large-centered small-block-grid-2 medium-block-grid-2 large-block-grid-2">
-			<div class="panel radius board">
-				<h4>Done</h4>
-				<hr>
-				<div class="tasks"></div>
-			</div>
-		</div>
+		
 	</div>
 	<script src="js/foundation.min.js"></script>
 	<script>
