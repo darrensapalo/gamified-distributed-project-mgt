@@ -5,7 +5,6 @@ class Task_Model extends CI_Model {
     var $name           = '';
     var $desc           = '';
     var $deadline       = '';
-    var $tags           = array();
 
     function __construct()
     {
@@ -13,6 +12,23 @@ class Task_Model extends CI_Model {
         parent::__construct();
     }
     
+    function add(){
+        $this->name = $this->input->post("name");
+        $this->desc = $this->input->post("desc");
+        $this->deadline = $this->input->post("deadline");
+        $this->deadline = date('Y-m-d H:i:s', strtotime($this->input->post('deadline')));
+        $this->board = -1;
+
+        $tags = array();
+        $tags[] = $this->input->post("label-0");
+        $tags[] = $this->input->post("label-1");
+        $tags[] = $this->input->post("label-2");
+        $tags[] = $this->input->post("label-3");
+        $tags[] = $this->input->post("label-4");
+
+        $this->db->insert(self::TABLE_NAME, $this);
+    }
+
     function get_all()
     {
         $result = array();
@@ -43,7 +59,7 @@ class Task_Model extends CI_Model {
             // Checks remaining time left
             $daysLeft = date('d', strtotime($task->deadline)) - date('d');
             if ($daysLeft < 0){
-                $tasks->deadline_from_now = 'Overdue';
+                $task->deadline_from_now = 'Overdue';
             }else if ($daysLeft == 0){
                 $task->deadline_from_now = 'Due today';
             }else{

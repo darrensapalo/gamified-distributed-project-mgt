@@ -10,9 +10,9 @@
 	<link rel="stylesheet" href="<?PHP echo base_url(); ?>css/my.css" />
 
 	<script src="<?PHP echo base_url(); ?>js/vendor/jquery.js"></script>
+	<script src="<?PHP echo base_url(); ?>js/jquery-ui-1.10.4.custom.min.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/vendor/modernizr.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/foundation.min.js"></script>
-	<script src="<?PHP echo base_url(); ?>js/jquery-ui-1.10.4.custom.min.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/bootstrap.min.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/bootstrap-editable.min.js"></script>
 

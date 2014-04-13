@@ -28,7 +28,7 @@
 					</li>
 				</ul>
 			</li>
-			<li>
+			<li style="display: none">
 				<?php echo anchor('people', 'People'); ?>
 			</li>
 			<li>

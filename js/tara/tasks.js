@@ -20,6 +20,8 @@ function updateTaskToBoard(taskID, board){
 $(function() {
 	$(".options").hide();
 
+	$('#deadline').datetimepicker();
+
 	$( ".tasks" ).sortable({
 		helper: "clone",
 		placeholder: "ui-state-highlight .task-placeholder ",
@@ -89,6 +91,8 @@ $(function() {
 	});
 
 	$('.task-input').editable({
-		url: '/task/edit'
+		type: 'text',
+		url: 'tasks/edit'
 	});
+
 });

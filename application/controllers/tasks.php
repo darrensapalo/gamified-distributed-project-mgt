@@ -6,6 +6,7 @@ class Tasks extends CI_Controller {
 		parent::__construct();
 		$this->load->model("task_model");
 		$this->load->model("log_model");
+		$this->load->helper("form");
 	}
 
 	public function index()
@@ -17,13 +18,14 @@ class Tasks extends CI_Controller {
 
 	public function add()
 	{
-		
+		$this->task_model->add();
+		$this->index();
 	}
 
 	public function edit()
 	{
-		$id = $this->input->post('pk');
 		$field = $this->input->post('name');
+		$id = $this->input->post('pk');
 		$value = $this->input->post('value');
 
 		$this->task_model->update($id, $field, $value);

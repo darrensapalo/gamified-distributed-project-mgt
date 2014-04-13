@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<?PHP $this->load->view('common/header');  ?>
+	<script src="<?PHP echo base_url(); ?>js/jquery-ui-timepicker-addon.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/tara/common.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/tara/tasks.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/tara/logs.js"></script>
@@ -51,12 +52,12 @@
 					<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3">
 						<li>
 							<div class="panel radius board">
-								<h4>To-do <a href="#" data-reveal-id="newTask" data-reveal><i class='fa fa-plus right button small'></i></a></h4>
+								<h4>To-do <a href="#" id="addNewTask" data-reveal-id="newTask" data-reveal><i class='fa fa-plus right button small'></i></a></h4>
 								<hr>
 								<div class="tasks" title="To-do">
 									<?PHP foreach ($tasks['todo'] as $task): ?>
 									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
-										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-id="name"><?PHP echo $task->name; ?></a>
+										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
 											<div class="right">
 												<?PHP
 												// Display all tags
@@ -68,7 +69,7 @@
 										</h6>
 
 										<p class='desc'>
-											<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-id="desc"><?PHP echo $task->desc; ?></a>
+											<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-name="desc"><?PHP echo $task->desc; ?></a>
 										</p>
 										<hr>
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
@@ -88,7 +89,7 @@
 								<div class="tasks" title="Doing">
 									<?PHP foreach ($tasks['doing'] as $task): ?>
 									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
-										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-id="name"><?PHP echo $task->name; ?></a>
+										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
 											<div class="right">
 												<?PHP
 								// Display all tags
@@ -99,7 +100,7 @@
 											</div>
 										</h6>
 										<p class='desc'>
-											<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-id="desc"><?PHP echo $task->desc; ?></a>
+											<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-name="desc"><?PHP echo $task->desc; ?></a>
 										</p>
 										<hr>
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
@@ -119,7 +120,7 @@
 								<div class="tasks" title="Done">
 									<?PHP foreach ($tasks['done'] as $task): ?>
 									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
-										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-id="name"><?PHP echo $task->name; ?></a>
+										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
 											<div class="right">
 												<?PHP
 								// Display all tags
@@ -130,7 +131,7 @@
 											</div>
 										</h6>
 										<p class='desc'>
-											<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-id="desc"><?PHP echo $task->desc; ?></a>
+											<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-name="desc"><?PHP echo $task->desc; ?></a>
 										</p>
 										<hr>
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
