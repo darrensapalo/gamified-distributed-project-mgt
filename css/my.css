@@ -49,7 +49,7 @@ div.panel.task{
 }
 
 div.tasks{
-	min-height: 150px;
+	min-height: 300px;
 }
 
 .task-placeholder {
@@ -116,9 +116,9 @@ div.space{
 }
 
 .hide-text {
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 a.task-input{
@@ -127,7 +127,7 @@ a.task-input{
 }
 
 input[type="file"], input[type="checkbox"], input[type="radio"], select {
-margin: 0.5rem 0 0rem 0;
+	margin: 0.5rem 0 0rem 0;
 }
 
 .popover-title{
@@ -139,10 +139,11 @@ margin: 0.5rem 0 0rem 0;
 	width: 260px;
 }
 
-p#log {
-	color: #777;
-	margin: 0px;
-	min-height: 80px;
+li#log-entries, li.log-info{
+	color: #ccc;
+}
+li.log-info{
+	margin: 5px;
 }
 
 div.log.panel{
@@ -150,5 +151,9 @@ div.log.panel{
 }
 
 .progress {
-height: 1.0625rem;
+	height: 1.7625rem;
+}
+
+ul.off-canvas-list{
+	background-color: #333;
 }

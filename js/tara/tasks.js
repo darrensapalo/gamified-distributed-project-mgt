@@ -10,7 +10,7 @@ $(function() {
 			var title = f.item.context.title;
 			var board = f.item.context.parentNode.title;
 			var time = new Date().toTimeString();
-			var less_time = "<h4>" + time.substring(0,8) + "</h4>";
+			var less_time = "" + time.substring(0,8) + "";
 			
 			var experience = "";
 			var exp = 0;
@@ -27,9 +27,8 @@ $(function() {
 				experience = ( "<span class='label green'>" + exp + " experience</span> gained.<br />" );
 				addExperience(exp);
 			}
-			$("#log").html( less_time + experience + "Task \'" + title + "\' to the \'" + board + "\' board.").wrap("<p id='log'></p>");
 
-
+			$("#log-entries").prepend("<li><label>"+less_time+"</label></li><li class='log-info'>" + experience + "\'" + title + "\' moved to \'" + board + "\' board." + "</li>");
 		}
 	});
 
