@@ -8,15 +8,26 @@ $(function() {
 		distance: 50,
 		stop: function(e, f) {
 			var title = f.item.context.title;
+			var board = f.item.context.parentNode.title;
 			var time = new Date().toTimeString();
-			var less_time = time.substring(0,8);
+			var less_time = "<h4>" + time.substring(0,8) + "</h4>";
+			
 			var experience = "";
-			if (rand(5) < 4){
-				var exp = rand(15) + 5;
-				experience = ( "You gained " + exp + " experience. " );
+			var exp = 0;
+			if (board == "Done"){
+				if (rand(2) == 0){
+					exp = rand(15) + 10;
+				}				
+			}else if (rand(5) == 0){
+				var exp = rand(6) + 2;
+				
+			}
+
+			if (exp > 0){
+				experience = ( "<span class='label green'>" + exp + " experience</span> gained.<br />" );
 				addExperience(exp);
 			}
-			$("#log").text( less_time + " - " + experience + "Task \'" + title + "\' dropped. ");
+			$("#log").html( less_time + experience + "Task \'" + title + "\' to the \'" + board + "\' board.").wrap("<p id='log'></p>");
 
 
 		}
@@ -33,7 +44,7 @@ $(function() {
 	});
 
 	$( "#toggleTags" ).click(function() {
-		$( ".label:not(.tag-select)" ).each(function(index) {
+		$( ".task-label" ).each(function(index) {
 			var currentText = $( this ).text();
 			if (currentText != ""){
 				$( this ).data("text", $( this ).text());

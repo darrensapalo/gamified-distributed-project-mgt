@@ -126,6 +126,10 @@ a.task-input{
 	margin-top: -100px;
 }
 
+input[type="file"], input[type="checkbox"], input[type="radio"], select {
+margin: 0.5rem 0 0rem 0;
+}
+
 .popover-title{
 	font-weight: bold;
 }
@@ -138,6 +142,7 @@ a.task-input{
 p#log {
 	color: #777;
 	margin: 0px;
+	min-height: 80px;
 }
 
 div.log.panel{

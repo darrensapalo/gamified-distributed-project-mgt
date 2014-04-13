@@ -34,20 +34,19 @@
 		</div>
 	</div>
 	<div class="row">
-
 		<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3">
 			<li>
 				<div class="panel radius board">
 					<h4>To-do <a href="#" data-reveal-id="newTask" data-reveal><i class='fa fa-plus right button small'></i></a></h4>
 					<hr>
-					<div class="tasks">
+					<div class="tasks" title="To-do">
 						<?PHP foreach ($tasks['todo'] as $task): ?>
 						<div class="panel task" title="<?PHP echo $task->name; ?>">
 							<div class="right">
 								<?PHP
 								// Display all tags
 								foreach ($task->tags as $tag){
-									echo "<span class='{$tag['color']} label'>{$tag['tags']}</span> ";
+									echo "<span class='{$tag['color']} label task-label'>{$tag['tags']}</span> ";
 								}
 								?>
 							</div>
@@ -70,14 +69,14 @@
 				<div class="panel radius board">
 					<h4>Doing </h4>
 					<hr>
-					<div class="tasks">
+					<div class="tasks" title="Doing">
 						<?PHP foreach ($tasks['doing'] as $task): ?>
 						<div class="panel task">
 							<div class="right">
 								<?PHP
 								// Display all tags
 								foreach ($task->tags as $tag){
-									echo "<span class='{$tag['color']} label'>{$tag['tags']}</span> ";
+									echo "<span class='{$tag['color']} label task-label'>{$tag['tags']}</span> ";
 								}
 								?>
 							</div>
@@ -100,14 +99,14 @@
 				<div class="panel radius board">
 					<h4>Done </h4>
 					<hr>
-					<div class="tasks">
+					<div class="tasks" title="Done">
 						<?PHP foreach ($tasks['done'] as $task): ?>
 						<div class="panel task">
 							<div class="right">
 								<?PHP
 								// Display all tags
 								foreach ($task->tags as $tag){
-									echo "<span class='{$tag['color']} label'>{$tag['tags']}</span> ";
+									echo "<span class='{$tag['color']} label task-label'>{$tag['tags']}</span> ";
 								}
 								?>
 							</div>
