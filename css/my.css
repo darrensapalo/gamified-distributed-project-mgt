@@ -40,7 +40,7 @@ p.deadline{
 
 div.panel.task{
 	background-color: #fff;
-	max-width: 240px;
+	max-width: 380px;
 }
 
 .ui-state-hover{
@@ -49,7 +49,7 @@ div.panel.task{
 }
 
 div.tasks{
-	min-height: 300px;
+	min-height: 150px;
 }
 
 .task-placeholder {
@@ -95,10 +95,22 @@ div p{
 	margin-bottom: 0px;
 }
 
+div a.button{
+	margin-bottom: 0px;
+}
+
 .panel .panel:last-child {
 	margin-bottom: 0rem;
 }
 
 .fa{
 	margin-right: 4px;
+}
+
+.selected{
+	margin-left: 20px;
+}
+
+div.space{
+	margin-bottom: 30px;
 }
