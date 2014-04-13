@@ -15,3 +15,6 @@
 	<script src="<?PHP echo base_url(); ?>js/jquery-ui-1.10.4.custom.min.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/bootstrap.min.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/bootstrap-editable.min.js"></script>
+
+	<script src="<?PHP echo base_url(); ?>js/tara/common.js"></script>
+	<script src="<?PHP echo base_url(); ?>js/tara/experience.js"></script>

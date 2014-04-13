@@ -134,3 +134,16 @@ a.task-input{
 	min-width: 260px;
 	width: 260px;
 }
+
+p#log {
+	color: #777;
+	margin: 0px;
+}
+
+div.log.panel{
+	height: 50px;
+}
+
+.progress {
+height: 1.0625rem;
+}

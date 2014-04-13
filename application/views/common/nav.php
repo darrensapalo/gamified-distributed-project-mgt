@@ -30,8 +30,13 @@
 			</li>
 			<li>
 				<?php echo anchor('people', 'People'); ?>
-
+			</li>
+			<li>
+				
 			</li>
 		</ul>
 	</section>
 </nav>
+<div class="progress small-12 large-12 success radius">
+	<span class="meter" id="experience" style="width: 0%"></span>
+</div>
