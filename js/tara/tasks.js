@@ -1,3 +1,22 @@
+function updateTaskToBoard(taskID, board){
+	console.log(board);
+	if (board == "To-do"){
+		board = -1;
+	}else if (board == "Doing"){
+		board = 0;
+	}else if (board == "Done"){
+		board = 1;
+	}
+
+	$.post("tasks/board", {
+		task_id: taskID,
+		board_id: board
+	}).done(function(data, e) {
+		console.log(data);
+		console.log(e);
+	});
+}
+
 $(function() {
 	$(".options").hide();
 
@@ -8,9 +27,13 @@ $(function() {
 		distance: 50,
 		stop: function(e, f) {
 			var title = f.item.context.title;
+			var task_id = f.item.context.dataset.taskId;
 			var board = f.item.context.parentNode.title;
 			var time = new Date().toTimeString();
 			var less_time = "" + time.substring(0,8) + "";
+
+			updateTaskToBoard(task_id, board);
+
 			
 			var experience = "";
 			var exp = 0;

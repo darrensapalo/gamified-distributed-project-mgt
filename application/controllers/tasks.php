@@ -29,6 +29,14 @@ class Tasks extends CI_Controller {
 		$this->task_model->update($id, $field, $value);
 	}
 
+	public function board()
+	{
+		$id = $this->input->post('task_id');
+		$field = 'board';
+		$value = $this->input->post('board_id');
+		$this->task_model->update($id, $field, $value);
+	}
+
 	public function delete($id)
 	{
 		# code...

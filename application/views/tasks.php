@@ -55,11 +55,11 @@
 								<hr>
 								<div class="tasks" title="To-do">
 									<?PHP foreach ($tasks['todo'] as $task): ?>
-									<div class="panel task" title="<?PHP echo $task->name; ?>">
+									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
 										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-id="name"><?PHP echo $task->name; ?></a>
 											<div class="right">
 												<?PHP
-								// Display all tags
+												// Display all tags
 												foreach ($task->tags as $tag){
 													echo "<span class='{$tag['color']} label task-label'>{$tag['tags']}</span> ";
 												}
@@ -87,7 +87,7 @@
 								<hr>
 								<div class="tasks" title="Doing">
 									<?PHP foreach ($tasks['doing'] as $task): ?>
-									<div class="panel task">
+									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
 										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-id="name"><?PHP echo $task->name; ?></a>
 											<div class="right">
 												<?PHP
@@ -96,8 +96,8 @@
 													echo "<span class='{$tag['color']} label task-label'>{$tag['tags']}</span> ";
 												}
 												?>
-											</h6>
-										</div>
+											</div>
+										</h6>
 										<p class='desc'>
 											<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-id="desc"><?PHP echo $task->desc; ?></a>
 										</p>
@@ -118,7 +118,7 @@
 								<hr>
 								<div class="tasks" title="Done">
 									<?PHP foreach ($tasks['done'] as $task): ?>
-									<div class="panel task">
+									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
 										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-id="name"><?PHP echo $task->name; ?></a>
 											<div class="right">
 												<?PHP
