@@ -52,6 +52,53 @@ div.tasks{
 	min-height: 300px;
 }
 
+.task-placeholder {
+	border: 1px dotted black;
+	margin: 0 1em 1em 0;
+	height: 50px;
+}
+
 h6{
 	font-weight: bold;
+}
+
+button.small, .button.small {
+	padding-top: 0.575rem;
+	padding-right: 0.75rem;
+	padding-bottom: 0.4375rem;
+	padding-left: .7375rem;
+	font-size: 0.5125rem;
+}
+
+button.extra-small, .button.extra-small {
+	padding: 0.5rem;
+	font-size: 0.4rem;
+}
+
+button.default, .button.default{
+	background-color: #444;
+}
+
+button.default:hover, button.default:focus, .button.default:hover, .button.default:focus {
+	background-color: #999;
+}
+
+button.disabled, .button.disabled{
+	background-color: #aaa;
+}
+
+button.disabled:hover, button.disabled:focus, .button.disabled:hover, .button.disabled:focus {
+	background-color: #ccc;
+}
+
+div p{
+	margin-bottom: 0px;
+}
+
+.panel .panel:last-child {
+	margin-bottom: 0rem;
+}
+
+.fa{
+	margin-right: 4px;
 }

@@ -1,23 +1,32 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<style type="text/css">
-	.task-placeholder {
-		border: 1px dotted black;
-		margin: 0 1em 1em 0;
-		height: 50px;
-	}
-	</style>
 	<?PHP $this->load->view('common/header');  ?>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
 	<script>
 	$(function() {
 		$(".desc").hide();
+		$("div.options").hide();
 		
 		$( ".tasks" ).sortable({
 			helper: "clone",
 			placeholder: "ui-state-highlight .task-placeholder ",
-			connectWith: ".tasks"
+			connectWith: ".tasks",
+			delay: 250
 		});
+
+		$( "#toggleDesc" ).click(function() {
+			$( ".desc" ).toggle("fast");
+			$( this ).toggleClass( "disabled" );
+		});
+
+		$( ".task" ).dblclick(function() {
+			$( this ).children( "div[class='options']" ).toggle("fast");
+		});
+
+		$.fn.editable.defaults.mode = 'inline';
+		$('.input-text').editable();
 	});
 
 
@@ -26,10 +35,21 @@
 </head>
 <body>
 	<?PHP $this->load->view('common/nav'); ?>
-
+	<div id="selectTags" class="reveal-modal" data-reveal>
+		<h2><task id="taskName"></task></h2>
+		<span class="orange label"></span>
+		<span class="red label"></span>
+		<span class="yellow label"></span>
+		<span class="blue label"></span>
+		<span class="green label"></span>
+		<span class="red label"></span>
+		<span class="yellow label"></span>
+		<a class="close-reveal-modal" >&#215;</a>
+		<a class="button">Done</a>
+	</div>
 	<div class="row">
 		<div class="large-12 columns">
-			<h1>CSC755M</h1>
+			<h1><i class="fa fa-tasks"></i>CSC755M</h1>
 			<hr>
 		</div>
 	</div>	
@@ -37,6 +57,10 @@
 		<div class="large-12 columns">
 			<div class="panel">
 				<p>On this page, you can view the list of tasks you are currently assigned to.</p>
+				<p>Double click to open more options for a single task.</p>
+				<a href="#" id="toggleDesc" class="button small default disabled"><i class='fa fa-comment'></i>Descriptions</a>
+				
+				
 			</div>
 		</div>
 	</div>
@@ -53,10 +77,14 @@
 							<div class="right">
 								<span class="blue label"></span>
 							</div>
-							<h6>Design analysis</h6>
+							<h6><a href="" class="input-text" data-type="text" data-url="/task/edit/" data-pk="1" data-id="name">Design analysis</a></h6>
 							<p class='desc'>Study the design of the open source PHP frameworks.</p>
 							<hr>
 							<p><i class='fa fa-clock-o'></i> 15 days left.</p>
+							<div class="options">
+								<hr>
+								<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small default"><i class='fa fa-tags'></i> Edit tags</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -99,7 +127,7 @@
 	</div>
 	<script src="js/foundation.min.js"></script>
 	<script>
-		$(document).foundation();
+	$(document).foundation();
 	</script>
 </body>
 </html>
