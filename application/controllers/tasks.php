@@ -5,7 +5,6 @@ class Tasks extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model("task_model");
-		$this->load->model("log_model");
 		$this->load->helper("form");
 	}
 

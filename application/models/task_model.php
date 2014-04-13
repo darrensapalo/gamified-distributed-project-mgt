@@ -26,6 +26,8 @@ class Task_Model extends CI_Model {
         $tags[] = $this->input->post("label-3");
         $tags[] = $this->input->post("label-4");
 
+        $this->log_model->add("added a new task '" . $this->name . "'.");
+
         $this->db->insert(self::TABLE_NAME, $this);
     }
 

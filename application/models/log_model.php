@@ -23,13 +23,15 @@ class Log_Model extends CI_Model {
 		return $this->db->get(self::TABLE_NAME, 5, 0)->result();
 	}
 
-	function add()
+	function add($description = null)
 	{
+		if ($description == null){
+			$description = $this->input->post("description");
+		}
 		$this->load->model('account_model');
-
 		$this->user_id = 1;
 		$user = $this->account_model->get($this->user_id);
-		$this->description = $user->user_id . " " . $this->input->post("description");
+		$this->description = $user->user_id . " " . $description;
 		return $this->db->insert(self::TABLE_NAME, $this); 
 	}
 }

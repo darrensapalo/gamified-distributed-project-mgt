@@ -8,7 +8,6 @@
 	<script src="<?PHP echo base_url(); ?>js/tara/logs.js"></script>
 </head>
 <body>
-	<?PHP $this->load->view('common/nav'); ?>
 	<?PHP $this->load->view('common/tag-selection'); ?>
 	<?PHP $this->load->view('common/new-task'); ?>
 	<div class="off-canvas-wrap" data-offcanvas>
@@ -16,6 +15,9 @@
 			<nav class="tab-bar">
 				<section class="left-small">
 					<a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+				</section>
+				<section class="right-small">
+					<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
 				</section>
 
 				<section class="middle tab-bar-section">
@@ -30,24 +32,28 @@
 					if (count($logs) == 0)
 						echo "<li><label>No recent logs</label></li>";
 					else
-					 	foreach ($logs as $log): ?>
+						foreach ($logs as $log): ?>
 					<li><label><?PHP echo $log->timestamp; ?></label></li>
 					<li class='log-info'><?PHP echo $log->description; ?></li>
 					<?PHP endforeach; ?>
 				</ul>
 			</aside>
+			<aside class="right-off-canvas-menu">
+				<ul class="off-canvas-list">
+					<li><label>Links</label></li>
+					<li><?PHP echo anchor('', 'Home'); ?></li>
+				</ul>
+			</aside>
 
 			<section class="main-section">
-				<div class="large-12 columns">
+				<div class="large-10 large-offset-1 columns">
 					<div class="progress small-12 large-12 success radius">
 						<span class="meter" id="experience" style="width: 0%"> Experience </span>
 					</div>
-				</div>
-				<div class="large-12 columns">
 					<div class="panel">
 						<p>On this page, you can view the list of tasks you are currently assigned to. Double click tasks to see more options.</p>
 						<a href="#" id="toggleDesc" class="button small default"><i class='fa fa-comment'></i>Descriptions</a>
-						<a href="#" id="toggleTags" class="button small default disabled"><i class='fa fa-tags'></i>Tiny tags</a>
+						<a href="#" id="toggleTags" class="button small default"><i class='fa fa-tags'></i>Tiny tags</a>
 					</div>
 					<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3">
 						<li>

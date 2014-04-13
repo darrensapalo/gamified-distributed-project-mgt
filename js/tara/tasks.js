@@ -19,8 +19,8 @@ function updateTaskToBoard(taskID, board){
 
 $(function() {
 	$(".options").hide();
-
 	$('#deadline').datetimepicker();
+	toggleTags();
 
 	$( ".tasks" ).sortable({
 		helper: "clone",
@@ -59,40 +59,46 @@ $(function() {
 		}
 	});
 
-	$( "#toggleDesc" ).click(function() {
-		$( ".desc" ).toggle("fast");
-		$( this ).toggleClass( "disabled" );
-	});
+$( "#toggleDesc" ).click(function() {
+	$( ".desc" ).toggle("fast");
+	$( this ).toggleClass( "disabled" );
+});
 
-	$( "#toggleDeadline" ).click(function() {
-		$( ".desc" ).toggle("fast");
-		$( this ).toggleClass( "disabled" );
-	});
+$( "#toggleDeadline" ).click(function() {
+	$( ".desc" ).toggle("fast");
+	$( this ).toggleClass( "disabled" );
+});
 
-	$( "#toggleTags" ).click(function() {
-		$( ".task-label" ).each(function(index) {
-			var currentText = $( this ).text();
-			if (currentText != ""){
-				$( this ).data("text", $( this ).text());
-				$( this ).text("");
-			}else{
-				$( this ).text($( this ).data("text"));
-			}
-		});
-		$( this ).toggleClass( "disabled" );
-	});
+$( "#toggleTags" ).click(function() {
+	toggleTags();
+	$( this ).toggleClass( "disabled" );
+});
 
-	$( ".tag-select" ).click(function() {
-		$( this ).toggleClass( "selected" );
-	});
 
-	$( ".task" ).dblclick(function() {
-		$( this ).children( "div[class='options']" ).toggle("fast");
-	});
 
-	$('.task-input').editable({
-		type: 'text',
-		url: 'tasks/edit'
-	});
+$( ".tag-select" ).click(function() {
+	$( this ).toggleClass( "selected" );
+});
+
+$( ".task" ).dblclick(function() {
+	$( this ).children( "div[class='options']" ).toggle("fast");
+});
+
+$('.task-input').editable({
+	type: 'text',
+	url: 'tasks/edit'
+});
 
 });
+
+function toggleTags(){
+	$( ".task-label" ).each(function(index) {
+		var currentText = $( this ).text();
+		if (currentText != ""){
+			$( this ).data("text", $( this ).text());
+			$( this ).text("");
+		}else{
+			$( this ).text($( this ).data("text"));
+		}
+	});
+}
