@@ -2,9 +2,15 @@
 
 class Project extends CI_Controller {
 
+	function __construct(){
+		parent::__construct();
+		$this->load->model("user_model");
+	}
 	public function index()
 	{
-		$this->load->view('project');
+		$data['users'] = $this->user_model->get_all();
+		$data['recent_activity'] = $this->log_model->get_recent(20);
+		$this->load->view('project', $data);
 	}
 }
 

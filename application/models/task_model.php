@@ -10,6 +10,7 @@ class Task_Model extends CI_Model {
     {
         // Call the Model constructor
         parent::__construct();
+        $this->load->model("tags_model");
     }
     
     function add(){
@@ -19,16 +20,23 @@ class Task_Model extends CI_Model {
         $this->deadline = date('Y-m-d H:i:s', strtotime($this->input->post('deadline')));
         $this->board = -1;
 
+        // tags
         $tags = array();
-        $tags[] = $this->input->post("label-0");
-        $tags[] = $this->input->post("label-1");
-        $tags[] = $this->input->post("label-2");
-        $tags[] = $this->input->post("label-3");
-        $tags[] = $this->input->post("label-4");
-
-        $this->log_model->add("added a new task '" . $this->name . "'.");
+        $tags[] = ($this->input->post("label-0")) ? "true" : "false";
+        $tags[] = ($this->input->post("label-1")) ? "true" : "false";
+        $tags[] = ($this->input->post("label-2")) ? "true" : "false";
+        $tags[] = ($this->input->post("label-3")) ? "true" : "false";
+        $tags[] = ($this->input->post("label-4")) ? "true" : "false";
 
         $this->db->insert(self::TABLE_NAME, $this);
+
+        // get the newly created task
+        $this->db->order_by('id', 'desc');
+        $data = $this->db->get(self::TABLE_NAME, 1, 0)->row();
+
+        
+        $this->tags_model->updateTags($tags, $data->id);
+        $this->log_model->add("added a new task '" . $this->name . "'.");
     }
 
     function get_all()
@@ -88,5 +96,4 @@ class Task_Model extends CI_Model {
 
         $this -> db -> update(Task_Model::TABLE_NAME, $data);
     }
-
 }

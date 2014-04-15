@@ -108,10 +108,6 @@ div a.button{
 	margin-right: 4px;
 }
 
-.selected{
-	margin-left: 20px;
-}
-
 div.space{
 	margin-bottom: 30px;
 }
@@ -182,4 +178,8 @@ span#experience{
 
 .tab-bar{
 	height: 45px;
+}
+
+.tag-select{
+	min-width: 200px;
 }

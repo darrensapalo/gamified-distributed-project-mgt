@@ -5,6 +5,7 @@ class Tasks extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model("task_model");
+		$this->load->model("tags_model");
 		$this->load->helper("form");
 	}
 
@@ -46,6 +47,10 @@ class Tasks extends CI_Controller {
 	public function undelete($id)
 	{
 		# code...
+	}
+
+	public function tags(){
+		$this->tags_model->updateTags($this->input->post("tags"), $this->input->post("id"));
 	}
 }
 

@@ -64,7 +64,7 @@
 									<?PHP foreach ($tasks['todo'] as $task): ?>
 									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
 										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
-											<div class="right">
+											<div class="right tags">
 												<?PHP
 												// Display all tags
 												foreach ($task->tags as $tag){
@@ -81,7 +81,7 @@
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
 										<div class="options">
 											<hr>
-											<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small default"><i class='fa fa-tags'></i> Edit tags</a>
+											<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small select-tags default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-tags'></i> Edit tags</a>
 										</div>
 									</div>
 									<?PHP endforeach; ?>
@@ -96,7 +96,7 @@
 									<?PHP foreach ($tasks['doing'] as $task): ?>
 									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
 										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
-											<div class="right">
+											<div class="right tags">
 												<?PHP
 								// Display all tags
 												foreach ($task->tags as $tag){
@@ -112,7 +112,7 @@
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
 										<div class="options">
 											<hr>
-											<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small default" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-tags'></i> Edit tags</a>
+											<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small select-tags default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-tags'></i> Edit tags</a>
 										</div>
 									</div>
 									<?PHP endforeach; ?>
@@ -127,9 +127,9 @@
 									<?PHP foreach ($tasks['done'] as $task): ?>
 									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
 										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
-											<div class="right">
+											<div class="right tags">
 												<?PHP
-								// Display all tags
+												// Display all tags
 												foreach ($task->tags as $tag){
 													echo "<span class='{$tag['color']} label task-label'>{$tag['tags']}</span> ";
 												}
@@ -143,7 +143,7 @@
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
 										<div class="options">
 											<hr>
-											<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small default" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-tags'></i> Edit tags</a>
+											<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small select-tags default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-tags'></i> Edit tags</a>
 										</div>
 									</div>
 									<?PHP endforeach; ?>

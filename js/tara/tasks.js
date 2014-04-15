@@ -1,3 +1,5 @@
+var taskID_changeTags;
+
 function updateTaskToBoard(taskID, board){
 	console.log(board);
 	if (board == "To-do"){
@@ -74,11 +76,38 @@ $( "#toggleTags" ).click(function() {
 	$( this ).toggleClass( "disabled" );
 });
 
+$( ".select-tags" ).click(function() {
+	var title = $( this ).data("title");
+	$("#change-tag-task-name").text(title);
+	taskID_changeTags = $( this ).data("task-id");
+});
 
 
 $( ".tag-select" ).click(function() {
 	$( this ).toggleClass( "selected" );
 });
+
+$( "#assignTagsForm" ).submit(function() {
+	event.preventDefault();
+
+	// Get some values from elements on the page:
+	var $form = $( this ),
+	label = $form.find( "input[id='change-tag']" ),
+	url = $form.attr( "action" );
+
+	var chk = label.context;
+	var tagsData = [chk[0].checked, chk[1].checked, chk[2].checked, chk[3].checked, chk[4].checked];
+	
+	console.log(url);
+	// Send the data using post
+	var posting = $.post( url, { tags: tagsData, id: taskID_changeTags } );
+
+	// Put the results in a div
+	posting.done(function( data , e) {
+		updateTasks(taskID_changeTags);
+	});
+});
+
 
 $( ".task" ).dblclick(function() {
 	$( this ).children( "div[class='options']" ).toggle("fast");
@@ -101,4 +130,8 @@ function toggleTags(){
 			$( this ).text($( this ).data("text"));
 		}
 	});
+}
+
+function updateTasks(id){
+	window.location.href = "http://localhost/tara/tasks";
 }

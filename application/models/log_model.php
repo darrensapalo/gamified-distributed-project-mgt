@@ -16,12 +16,13 @@ class Log_Model extends CI_Model {
 		return $this->db->get_where(self::TABLE_NAME, array('id' => $id))->row();
 	}
 
-	function get_recent()
+	function get_recent($amount = 5)
 	{
 		$this->db->join("users", "users.id = logs.user_id");
 		$this->db->order_by('timestamp', 'desc');
-		return $this->db->get(self::TABLE_NAME, 5, 0)->result();
+		return $this->db->get(self::TABLE_NAME, $amount, 0)->result();
 	}
+
 
 	function add($description = null)
 	{
