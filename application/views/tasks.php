@@ -61,8 +61,8 @@
 					</div>
 					<h2>Tasks</h2>
 					<hr>
-					<div class="progress small-12 large-12 success radius">
-						<span class="experience meter" id="experience" style="width: 0%"> Experience </span>
+					<div class="experience progress small-12 large-12 success radius">
+						<span class="experience meter" id="experience" style="width: 0%"> Experience <span id="exp-info"></span></span>
 					</div>
 					<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3">
 						<li>
@@ -182,7 +182,6 @@
 				</div>
 			</section>
 		</div>
-		<script src="js/foundation.min.js"></script>
 		<script>
 		$(document).foundation();
 		</script>

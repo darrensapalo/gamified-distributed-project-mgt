@@ -3,5 +3,5 @@
   RewriteBase /tara
   
   RewriteCond $1 !^(index\.php|img|robots\.txt|js|css|fonts|favicon\.ico|uploads)
-  RewriteRule ^(.*)$ index.php/$1 [L]  
-</IfModule>
+  RewriteRule ^(.*)$ index.php/$1 [L]
+  </IfModule>

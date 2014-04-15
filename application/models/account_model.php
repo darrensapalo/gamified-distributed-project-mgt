@@ -66,7 +66,8 @@ class Account_Model extends CI_Model {
 	}
 
 	function experience_to_next_level($id){
-		return $this->level($id) * 1000;
+		$lvl = $this->level($id);
+		return $lvl * $lvl * 5;
 	}
 
 	/**

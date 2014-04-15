@@ -32,7 +32,7 @@
 			<h1>Project management <small>redesigned</small></h1>
 			<p>You can earn more experience and level up by adding tasks, moving tasks to their appropriate boards, and accomplishing tasks!</p>
 			<?PHP echo anchor('tasks', 'Start working', array('class' => 'button')); ?>
-			<?php echo anchor('log', 'Recent activity', array('class' => 'button default')); ?>
+			<?PHP echo anchor('log', 'Recent activity', array('class' => 'button default')); ?>
 		</div>
 
 		<h2>Teammates <small>CSC755M</small></h2>
@@ -63,7 +63,7 @@
 			<li>
 				<div class="panel radius">
 					<h3><i class="fa fa-user"></i><?PHP echo $user->user_id; ?></h3>
-					<span class="<?PHP echo $level_effect; ?> label">Level <?PHP echo $user->level . " " . $user->label; ?></span>
+					<span class="<?PHP echo $level_effect; ?> label user-label">Level <?PHP echo $user->level . " " . $user->label; ?></span>
 					<div class="progress success radius">
 						<span class="meter experience" style="width: <?PHP echo "$expPercentage%"; ?>"><?PHP echo "$user->experience / $max experience"; ?></span>
 					</div>

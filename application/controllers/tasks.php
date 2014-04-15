@@ -50,7 +50,8 @@ class Tasks extends CI_Controller {
 	}
 
 	public function tags(){
-		$this->tags_model->updateTags($this->input->post("tags"), $this->input->post("id"));
+		if ($this->input->post("tags"))
+			$this->tags_model->updateTags($this->input->post("tags"), $this->input->post("id"));
 	}
 }
 

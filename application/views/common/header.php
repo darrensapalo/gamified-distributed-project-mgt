@@ -19,3 +19,4 @@
 
 	<script src="<?PHP echo base_url(); ?>js/tara/common.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/tara/experience.js"></script>
+	<script src="<?PHP echo base_url(); ?>js/tara/cookies.js"></script>

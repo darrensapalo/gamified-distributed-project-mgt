@@ -1,7 +1,6 @@
 var taskID_changeTags;
 
 function updateTaskToBoard(taskID, board){
-	console.log(board);
 	if (board == "To-do"){
 		board = -1;
 	}else if (board == "Doing"){
@@ -31,8 +30,7 @@ $(function() {
 			var title = f.item.context.title;
 			var task_id = f.item.context.dataset.taskId;
 			var board = f.item.context.parentNode.title;
-			var time = new Date().toTimeString();
-			var less_time = "" + time.substring(0,8) + "";
+			
 
 			updateTaskToBoard(task_id, board);
 
@@ -41,20 +39,18 @@ $(function() {
 			var exp = 0;
 			if (board == "Done"){
 				if (rand(2) == 0){
-					exp = rand(15) + 10;
+					exp = rand(10) + 5;
 				}				
 			}else if (rand(5) == 0){
-				var exp = rand(6) + 2;
+				var exp = rand(5) + 2;
 				
 			}
 
 			if (exp > 0){
-				experience = ( "<span class='label green'>" + exp + " experience</span> gained.<br />" );
-				log("received " + exp + " experience.");
-				addExperience(exp);
+				experience = ( "received <span class='label green'>" + exp + " experience</span>" );
+				log(experience);
+				addExperience(exp, $( this ) );
 			}
-
-			$("#log-entries").prepend("<li><label>"+less_time+"</label></li><li class='log-info'>" + experience + "\'" + title + "\' moved to \'" + board + "\' board." + "</li>");
 			log("moved task \'" + title + "\' to \'" + board + "\' board.");
 		}
 	});
@@ -96,13 +92,35 @@ $( "#assignTagsForm" ).submit(function() {
 	var chk = label.context;
 	var tagsData = [chk[0].checked, chk[1].checked, chk[2].checked, chk[3].checked, chk[4].checked];
 	
-	console.log(url);
 	// Send the data using post
 	var posting = $.post( url, { tags: tagsData, id: taskID_changeTags } );
 
 	// Put the results in a div
 	posting.done(function( data , e) {
 		updateTasks(taskID_changeTags);
+	});
+});
+
+$( "#submitNewTask" ).submit(function() {
+	event.preventDefault();
+
+	// Get some values from elements on the page:
+	var $form = $( this ),
+	taskName = $form.find( "input[name='name']" )[0].value,
+	taskDesc = $form.find( "textarea[name='desc']" )[0].value,
+	deadlineDate = $form.find( "input[name='deadline']" )[0].value,
+	label = $form.find( "input[type='checkbox']" ),
+	url = $form.attr( "action" );
+
+	var chk = label;
+	var tagsData = [chk[0].checked, chk[1].checked, chk[2].checked, chk[3].checked, chk[4].checked];
+	
+	// Send the data using post
+	var posting = $.post( url, { tags: tagsData, name: taskName, desc: taskDesc, deadline: deadlineDate } );
+
+	// Put the results in a div
+	posting.done(function( data , e) {
+		$('#newTask').foundation('reveal', 'close');
 	});
 });
 
@@ -113,7 +131,7 @@ $( ".task" ).dblclick(function() {
 
 $('.task-input').editable({
 	type: 'text',
-	url: 'tasks/edit'
+	url: '../tasks/edit'
 });
 
 });
@@ -132,4 +150,9 @@ function toggleTags(){
 
 function updateTasks(id){
 	window.location.href = "http://localhost/tara/tasks";
+}
+
+// function to remove all tasks and upate the whole board
+function updateBoard(){
+
 }

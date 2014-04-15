@@ -28,6 +28,12 @@ class Account extends CI_Controller {
 		$percent = $this->account_model->experience_percentage($user_id);
 		$this->load->view('experience', array('experience' => $percent, 'gained' => $gained, 'current' => $current));
 	}
+
+	public function username(){
+		$user_id = 1;
+		$username = $this -> account_model -> get($user_id);
+		$this->load->view('common/single', array('value' => $username->user_id));
+	}
 }
 
 /* End of file account.php */

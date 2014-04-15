@@ -21,12 +21,7 @@ class Task_Model extends CI_Model {
         $this->board = -1;
 
         // tags
-        $tags = array();
-        $tags[] = ($this->input->post("label-0")) ? "true" : "false";
-        $tags[] = ($this->input->post("label-1")) ? "true" : "false";
-        $tags[] = ($this->input->post("label-2")) ? "true" : "false";
-        $tags[] = ($this->input->post("label-3")) ? "true" : "false";
-        $tags[] = ($this->input->post("label-4")) ? "true" : "false";
+        $tags = $this->input->post("tags");
 
         $this->db->insert(self::TABLE_NAME, $this);
 
@@ -34,8 +29,9 @@ class Task_Model extends CI_Model {
         $this->db->order_by('id', 'desc');
         $data = $this->db->get(self::TABLE_NAME, 1, 0)->row();
 
-        
-        $this->tags_model->updateTags($tags, $data->id);
+        if ($tags && count($tags) > 0){
+            $this->tags_model->updateTags($tags, $data->id);    
+        }
         $this->log_model->add("added a new task '" . $this->name . "'.");
     }
 

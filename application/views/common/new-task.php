@@ -1,7 +1,7 @@
 <div id="newTask" class="reveal-modal small" data-reveal>
 	<div class="large-12 columns">
 		<h3><task id="taskName">Creating a new task</task></h3>
-		<?PHP echo form_open('tasks/add'); ?>
+		<?PHP echo form_open('tasks/add', array('id' => 'submitNewTask')); ?>
 		<!-- Task name -->
 		<input type='text' id="new-task" name='name' placeholder='Task name'/>
 

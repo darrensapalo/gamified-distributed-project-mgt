@@ -16,7 +16,7 @@ class Tags_Model extends CI_Model {
 		$this->db->delete(self::TABLE_NAME, array('task_id' => $task_id)); 
 
 		// update
-
+		print_r($tags);
 		foreach ($tags as $key => $value) {
 			// if the checkbox is enabled
 			
