@@ -21,7 +21,7 @@
 				</section>
 
 				<section class="middle tab-bar-section">
-					<h1>CSC755M</h1>
+						<h1>CSC755M</h1>
 				</section>
 			</nav>
 
@@ -48,12 +48,13 @@
 			<section class="main-section">
 				<div class="large-10 large-offset-1 columns">
 					<div class="progress small-12 large-12 success radius">
-						<span class="meter" id="experience" style="width: 0%"> Experience </span>
+						<span class="experience meter" id="experience" style="width: 0%"> Experience </span>
 					</div>
 					<div class="panel">
 						<p>On this page, you can view the list of tasks you are currently assigned to. Double click tasks to see more options.</p>
 						<a href="#" id="toggleDesc" class="button small default"><i class='fa fa-comment'></i>Descriptions</a>
 						<a href="#" id="toggleTags" class="button small default"><i class='fa fa-tags'></i>Tiny tags</a>
+						<?PHP echo anchor('', 'Back to dashboard', array('class' => 'button small')); ?>
 					</div>
 					<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3">
 						<li>

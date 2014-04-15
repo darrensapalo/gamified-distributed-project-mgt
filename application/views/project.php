@@ -27,32 +27,87 @@
 <body>
 	<?PHP $this->load->view('common/nav'); ?>
 	<div class="large-10 large-offset-1 columns">
-		<h2>Members</h2>
-		<hr>
 		<div class="panel">
-			<p>Assign tasks and allow everyone to see what everyone else is doing to ensure there is progress.</p>
+			<div class="space"></div>
+			<h1>Project management <small>redesigned</small></h1>
+			<div class="space"></div>
+			<p>You can earn more experience and level up by adding tasks, moving tasks to their appropriate boards, and accomplishing tasks!</p>
+			<?PHP echo anchor('', 'Start working', array('class' => 'button large')); ?>
 		</div>
+
+		<h2>Teammates <small>CSC755M</small></h2>
+		<hr>
 		<ul class="small-block-grid-1 medium-block-grid-4 large-block-grid-4">
-			<?PHP foreach ($users as $user): ?>
+			<?PHP foreach ($users as $user):
+			$max = ($user->level * 1000);
+			$expPercentage = ($user->experience / $max) * 100;
+			switch($user->level){
+				case 0:
+				case 1:
+				case 2: $level_effect = "blue";
+				break;
+				case 3: 
+				case 4: 
+				case 5: $level_effect = "yellow";
+				break;
+				case 6: 
+				case 7: 
+				case 8: $level_effect = "orange";
+				break;
+				case 9: 
+				case 10: 
+				case 11: $level_effect = "red";
+				break;
+			}
+			?>
 			<li>
 				<div class="panel radius">
-					<p><h4><?PHP echo $user->user_id; ?></h4></p>
-					<p><?PHP echo $user->label; ?></p>
+					<div class="">
+						<h4><i class="fa fa-user"></i><?PHP echo $user->user_id; ?> <small><?PHP echo $user->label; ?></small></h4>
+					</div>
 					<p>
-						<span class="blue label">Level <?PHP echo $user->level; ?></span>
+						<span class="<?PHP echo $level_effect; ?> label">Level <?PHP echo $user->level; ?></span>
 					</p>
+					<hr>
 					<p>
-						<span class="green label"><?PHP echo $user->experience ?> experience</span>
+						<em>Experience to next level</em>
+						<div class="progress success radius">
+							<span class="meter experience" style="width: <?PHP echo "$expPercentage%"; ?>"><?PHP echo "$user->experience / $max"; ?></span>
+						</div>
 					</p>
+					<hr>
+					<div class="badges">
+						<?PHP if (rand(0, 100) < 70): ?>
+						<p><i class="fa fa-html5"></i>HTML5 Mastery</p>
+						<?PHP endif; ?>
+						<?PHP if (rand(0, 100) < 50): ?>
+						<p><i class="fa fa-rocket"></i>Rapid Developer</p>
+						<?PHP endif; ?>
+						<?PHP if (rand(0, 100) < 40): ?>
+						<p><i class="fa fa-fire-extinguisher"></i>Bug finder</p>
+						<?PHP endif; ?>
+					</div>
 				</div>
 			</li>
 			<?PHP endforeach; ?>
 		</ul>
-		<h2>Task assignment</h2>
+
+
+
+		<h2>Tasks assignment</h2>
 		<hr>
-		<div class="panel">
-			<p><strong>Distributed monitoring</strong> allows you to verify if tasks assigned to other people really are accomplished.</p>
-		</div>
+		
+		<?PHP
+		$amount = 0;
+		foreach ($assignments as $task){
+			if (count($task->assigned_to) <= 0) continue;
+			
+			$amount++;
+		}
+		if ($amount <= 0):
+			echo "<div class='panel'><p><strong>No finished tasks</strong> so start working!</p></div>";
+		else:
+			?>
 		<table class="large-10 large-offset-1">
 			<thead>
 				<tr>
@@ -64,12 +119,9 @@
 			</thead>
 
 			<?PHP
-			if (count($assignments) == 0)
-				echo "<p>There were no recent activities. Start working!</p>";
-			else
-				foreach ($assignments as $task):
-					if (count($task->assigned_to) <= 0) continue;
-				?>
+			foreach ($assignments as $task):
+				if (count($task->assigned_to) <= 0) continue;
+			?>
 			<tr>
 				<td>
 					<?PHP echo $task->name; ?>
@@ -81,20 +133,24 @@
 					} ?>
 				</td>
 				<td>
-					<?PHP echo $task->deadline; ?>
+					<?PHP echo $task->deadline_from_now;
+					if ($task->board > 0)
+						echo ' (Finished)';
+					?>
 				</td>
 				<td>
-					<a href="" class="button radius small green"><i class="fa fa-check"></i>Confirm</a>
-					<a href="" class="alert button small"><i class="fa fa-ban"></i>Report</a>
+					<?PHP if($task->board > 0) 
+					echo anchor('tasks', 'Confirm', array('class' => 'button radius small green'));
+					echo ' ';
+					echo anchor('', 'Report', array('class' => 'button radius small alert'));
+					?>
 				</td>
 			</td>
 		</tr>
 		<?PHP endforeach; ?>
 	</table>
+	<?PHP endif; ?>
 	<h2>Recent activity</h2>
-	<div class="panel">
-			<p>These logs show the different actions done by all of the members of the project.</p>
-		</div>
 	<hr>
 	<table class="large-6 large-offset-3">
 		<thead>

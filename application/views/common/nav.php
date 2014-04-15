@@ -9,25 +9,24 @@
 	<section class="top-bar-section">
 		<!-- Right Nav Section -->
 		<ul class="right">
-			<li class="active"><a href="#">Register</a></li>
+			<!-- <li class="active"><a href="#">Register</a></li>
 			<li>
 				<?php echo anchor('login', 'Log in'); ?>
 
+			</li> -->
+			<li class="active"><a href="#">darrensapalo</a></li>
+			<li>
+				<?php echo anchor('account/settings', 'Settings'); ?>
 			</li>
-			
 		</ul>
 
 		<!-- Left Nav Section -->
 		<ul class="left">
-			<li class="has-dropdown">
+			<li><?php echo anchor('tasks', 'CSC755M'); ?></li>
+			<!-- <li class="has-dropdown">
 				<a href="#">Projects</a>
-				<ul class="dropdown">
-					<li>
-						<?php echo anchor('tasks', 'CSC755M'); ?>
 
-					</li>
-				</ul>
-			</li>
+			</li> -->
 			<li style="display: none">
 				<?php echo anchor('people', 'People'); ?>
 			</li>

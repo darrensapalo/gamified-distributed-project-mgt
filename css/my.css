@@ -155,8 +155,8 @@ ul.off-canvas-list{
 	background-color: #333;
 }
 
-span#experience{
-	color: #FFF;
+span.experience{
+	color: #fff;
 	font-size: 9px;
 	line-height: 20px;
 	text-align: left;
@@ -182,4 +182,9 @@ span#experience{
 
 .tag-select{
 	min-width: 200px;
+}
+div.badges > p > i{
+	font-size: 50px;
+	min-width: 75px;
+	margin-bottom: 10px;
 }

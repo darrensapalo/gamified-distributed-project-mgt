@@ -14,8 +14,6 @@ function updateTaskToBoard(taskID, board){
 		task_id: taskID,
 		board_id: board
 	}).done(function(data, e) {
-		console.log(data);
-		console.log(e);
 	});
 }
 
