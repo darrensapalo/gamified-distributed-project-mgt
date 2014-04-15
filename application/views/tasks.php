@@ -41,7 +41,11 @@
 			<aside class="right-off-canvas-menu">
 				<ul class="off-canvas-list">
 					<li><label>Links</label></li>
-					<li><?PHP echo anchor('', 'Home'); ?></li>
+					<li><?PHP echo anchor('', 'Class repository'); ?></li>
+					<li><?PHP echo anchor('', 'Website'); ?></li>
+					<li><?PHP echo anchor('', 'Database (MySQL)'); ?></li>
+					<li><?PHP echo anchor('', 'JQuery documentation'); ?></li>
+					<li><?PHP echo anchor('', 'CodeIgniter documentation'); ?></li>
 				</ul>
 			</aside>
 
