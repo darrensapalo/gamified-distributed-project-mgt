@@ -11,7 +11,8 @@ class Log extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('project');
+		$data['recent_activity'] = $this->log_model->get_recent(50);
+		$this->load->view('recent_activity', $data);
 	}
 
 	public function add()

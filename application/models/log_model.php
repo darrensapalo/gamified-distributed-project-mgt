@@ -18,6 +18,7 @@ class Log_Model extends CI_Model {
 
 	function get_recent($amount = 5)
 	{
+		$this->db->select("*, logs.id as 'log_id'");
 		$this->db->join("users", "users.id = logs.user_id");
 		$this->db->order_by('timestamp', 'desc');
 		return $this->db->get(self::TABLE_NAME, $amount, 0)->result();

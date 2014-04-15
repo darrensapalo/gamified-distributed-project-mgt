@@ -23,6 +23,7 @@
 		<!-- Left Nav Section -->
 		<ul class="left">
 			<li><?php echo anchor('tasks', 'CSC755M'); ?></li>
+			<li><?php echo anchor('log', 'Recent activity'); ?></li>
 			<!-- <li class="has-dropdown">
 				<a href="#">Projects</a>
 

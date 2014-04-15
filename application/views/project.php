@@ -30,9 +30,8 @@
 		<div class="panel">
 			<div class="space"></div>
 			<h1>Project management <small>redesigned</small></h1>
-			<div class="space"></div>
 			<p>You can earn more experience and level up by adding tasks, moving tasks to their appropriate boards, and accomplishing tasks!</p>
-			<?PHP echo anchor('tasks', 'Start working', array('class' => 'button large')); ?>
+			<?PHP echo anchor('tasks', 'Start working', array('class' => 'button')); ?>
 		</div>
 
 		<h2>Teammates <small>CSC755M</small></h2>
@@ -151,34 +150,7 @@
 	<?PHP endforeach; ?>
 </table>
 <?PHP endif; ?>
-<h2>Recent activity</h2>
-<hr>
-<table class="large-6 large-offset-3">
-	<thead>
-		<tr>
-			<td width="30%">Timestamp</td>
-			<td width="70%">Activity</td>
-		</tr>
-	</thead>
 
-	<?PHP
-	if (count($recent_activity) == 0)
-		echo "<p>There were no recent activities. Start working!</p>";
-	else
-		foreach ($recent_activity as $log): ?>
-
-	<tr>
-		<td>
-			<?PHP echo $log->timestamp; ?>
-		</td>
-
-		<td>
-			<?PHP echo $log->description; ?>
-		</td>
-	</td>
-</tr>
-<?PHP endforeach; ?>
-</table>
 </div>
 </div>
 <script src="js/foundation.min.js"></script>
