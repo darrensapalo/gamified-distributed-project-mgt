@@ -23,7 +23,6 @@ class Log_Model extends CI_Model {
 		return $this->db->get(self::TABLE_NAME, $amount, 0)->result();
 	}
 
-
 	function add($description = null)
 	{
 		if ($description == null){
