@@ -87,6 +87,38 @@ class Task_Model extends CI_Model {
         return $result;
     }
 
+    function get_all_by_person()
+    {
+        $result = array();
+        $tasks = $this->get_all();
+
+
+        foreach($tasks as $task){
+            // Checks remaining time left
+            $daysLeft = date('d', strtotime($task->deadline)) - date('d');
+            if ($daysLeft < 0){
+                $task->deadline_from_now = 'Overdue';
+            }else if ($daysLeft == 0){
+                $task->deadline_from_now = 'Due today';
+            }else{
+                $task->deadline_from_now = $daysLeft . " day" . (($daysLeft > 1) ? 's':'') . " left";
+            }
+
+            $task->assigned_to = $this->get_people_assigned($task->id);
+            $result[] = $task;
+        }
+
+        return $result;
+    }
+
+    function get_people_assigned($task_id)
+    {
+        $this -> db -> select('users.user_id');
+        $this -> db -> join('users', 'users.id = tasks_to_users.user_id');
+        $this -> db -> where('tasks_to_users.id', $task_id);
+        return $this -> db -> get('tasks_to_users')->row_array();
+    }
+
     /**
      * Updates the database given a field and the new value
      */
