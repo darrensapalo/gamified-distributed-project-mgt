@@ -3,10 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2014 at 06:21 AM
+-- Generation Time: Apr 15, 2014 at 06:23 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -55,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
 -- Dumping data for table `logs`
 --
 
-INSERT DELAYED INTO `logs` (`id`, `user_id`, `timestamp`, `description`) VALUES
+INSERT INTO `logs` (`id`, `user_id`, `timestamp`, `description`) VALUES
 (18, 1, '2014-04-13 11:12:52', 'darrensapalo moved task ''Design Analysis'' to ''Doing'' board.'),
 (19, 1, '2014-04-13 11:12:52', 'darrensapalo received 5 experience.'),
 (20, 1, '2014-04-13 11:12:52', 'darrensapalo moved task ''Test prototype'' to ''Doing'' board.'),
@@ -473,7 +474,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
 -- Dumping data for table `tags`
 --
 
-INSERT DELAYED INTO `tags` (`id`, `name`, `color`) VALUES
+INSERT INTO `tags` (`id`, `name`, `color`) VALUES
 (1, 'Changes and Revisions', 'orange'),
 (2, 'Bugs', 'red'),
 (3, 'Design', 'yellow'),
@@ -501,7 +502,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 -- Dumping data for table `tasks`
 --
 
-INSERT DELAYED INTO `tasks` (`id`, `name`, `desc`, `deadline`, `board`, `milestone_id`) VALUES
+INSERT INTO `tasks` (`id`, `name`, `desc`, `deadline`, `board`, `milestone_id`) VALUES
 (1, 'Design Analysis', 'Study the design of the open source PHP frameworks. Learn more.', '2014-04-12 16:00:00', 1, NULL),
 (2, 'Present the prototype', 'Allow the determined target users to use the prototype and apply contextual inquiry user research method.', '2014-04-14 16:00:00', 1, NULL),
 (3, 'Review more works', 'Find out if there are other concepts that you can apply to encourage users to engage more.', '2014-04-29 16:00:00', 0, NULL),
@@ -528,7 +529,7 @@ CREATE TABLE IF NOT EXISTS `tasks_to_tags` (
 -- Dumping data for table `tasks_to_tags`
 --
 
-INSERT DELAYED INTO `tasks_to_tags` (`id`, `task_id`, `tags_id`) VALUES
+INSERT INTO `tasks_to_tags` (`id`, `task_id`, `tags_id`) VALUES
 (2, 2, 4),
 (3, 2, 1),
 (40, 3, 5),
@@ -557,7 +558,7 @@ CREATE TABLE IF NOT EXISTS `tasks_to_users` (
 -- Dumping data for table `tasks_to_users`
 --
 
-INSERT DELAYED INTO `tasks_to_users` (`id`, `task_id`, `user_id`) VALUES
+INSERT INTO `tasks_to_users` (`id`, `task_id`, `user_id`) VALUES
 (1, 1, 1),
 (2, 3, 2),
 (3, 5, 3),
@@ -585,7 +586,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT DELAYED INTO `users` (`id`, `user_id`, `email`, `password`, `experience`, `level`, `label`) VALUES
+INSERT INTO `users` (`id`, `user_id`, `email`, `password`, `experience`, `level`, `label`) VALUES
 (1, 'darrensapalo', 'darren.sapalo@gmail.com', 'test', 414, 1, 'Newbie'),
 (2, 'robertocruz', 'rbecruz@gmail.com', 'test', 999, 4, 'Apprentice'),
 (3, 'marvinsuangco', 'msuangco@gmail.com', 'test', 3768, 7, 'Professional'),
@@ -627,6 +628,7 @@ ALTER TABLE `tasks_to_tags`
 ALTER TABLE `tasks_to_users`
   ADD CONSTRAINT `fk_task_to_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fl_user_to_task` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
