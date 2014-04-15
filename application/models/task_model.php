@@ -76,8 +76,8 @@ class Task_Model extends CI_Model {
                 $task->deadline_from_now = $daysLeft . " day" . (($daysLeft > 1) ? 's':'') . " left";
             }  
 
-            $task->assigned_to = $this->get_people_assigned($task->id);
-
+            $task->assigned_to = $data = $this->get_people_assigned($task->id);
+            
             // Classify
             if ($task -> board < 0)
                 $result['todo'][] = $task;
@@ -117,8 +117,8 @@ class Task_Model extends CI_Model {
     {
         $this -> db -> select('users.user_id');
         $this -> db -> join('users', 'users.id = tasks_to_users.user_id');
-        $this -> db -> where('tasks_to_users.id', $task_id);
-        return $this -> db -> get('tasks_to_users')->row_array();
+        $this -> db -> where('task_id', $task_id);
+        return $this -> db -> get('tasks_to_users')->result_array();
     }
 
     /**

@@ -86,8 +86,10 @@
 										<hr>
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
 										<?php 
-										if (count($task->assigned_to) > 0): ?>
-											<p><i class='fa fa-user'></i> <?PHP foreach($task->assigned_to as $person) echo $person . " "; ?></p>
+										if (count($task->assigned_to) > 0):?>
+										 	<?PHP foreach($task->assigned_to as $person): ?>
+												<p><i class='fa fa-user'></i> <?PHP echo $person['user_id'] . " ";?></p>
+											<?PHP endforeach; ?>
 										<?PHP endif; ?>
 										<div class="options">
 											<hr>
@@ -121,8 +123,10 @@
 										<hr>
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
 										<?php 
-										if (count($task->assigned_to) > 0): ?>
-											<p><i class='fa fa-user'></i> <?PHP foreach($task->assigned_to as $person) echo $person . " "; ?></p>
+										if (count($task->assigned_to) > 0):?>
+										 	<?PHP foreach($task->assigned_to as $person): ?>
+												<p><i class='fa fa-user'></i> <?PHP echo $person['user_id'] . " ";?></p>
+											<?PHP endforeach; ?>
 										<?PHP endif; ?>
 										<div class="options">
 											<hr>
@@ -156,8 +160,10 @@
 										<hr>
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
 										<?php 
-										if (count($task->assigned_to) > 0): ?>
-											<p><i class='fa fa-user'></i> <?PHP foreach($task->assigned_to as $person) echo $person . " "; ?></p>
+										if (count($task->assigned_to) > 0):?>
+										 	<?PHP foreach($task->assigned_to as $person): ?>
+												<p><i class='fa fa-user'></i> <?PHP echo $person['user_id'] . " ";?></p>
+											<?PHP endforeach; ?>
 										<?PHP endif; ?>
 										<div class="options">
 											<hr>
