@@ -74,7 +74,9 @@ class Task_Model extends CI_Model {
                 $task->deadline_from_now = 'Due today';
             }else{
                 $task->deadline_from_now = $daysLeft . " day" . (($daysLeft > 1) ? 's':'') . " left";
-            }
+            }  
+
+            $task->assigned_to = $this->get_people_assigned($task->id);
 
             // Classify
             if ($task -> board < 0)

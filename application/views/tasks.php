@@ -21,7 +21,7 @@
 				</section>
 
 				<section class="middle tab-bar-section">
-						<h1>CSC755M</h1>
+					<h1>CSC755M</h1>
 				</section>
 			</nav>
 
@@ -47,14 +47,14 @@
 
 			<section class="main-section">
 				<div class="large-10 large-offset-1 columns">
-							<div class="panel">
-								<div class="space"></div>
-								<h1>Project management <small>redesigned</small></h1>
-								<p>This page allows you to visualize the remaining things that you need to do.</p>
-								<a href="#" id="toggleDesc" class="button default"><i class='fa fa-comment'></i>Descriptions</a>
-								<a href="#" id="toggleTags" class="button default"><i class='fa fa-tags'></i>Tiny tags</a>
-								<?PHP echo anchor('', 'Back to dashboard', array('class' => 'button')); ?>
-							</div>
+					<div class="panel">
+						<div class="space"></div>
+						<h1>Project management <small>redesigned</small></h1>
+						<p>This page allows you to visualize the remaining things that you need to do.</p>
+						<a href="#" id="toggleDesc" class="button default"><i class='fa fa-comment'></i>Descriptions</a>
+						<a href="#" id="toggleTags" class="button default"><i class='fa fa-tags'></i>Tiny tags</a>
+						<?PHP echo anchor('', 'Back to dashboard', array('class' => 'button')); ?>
+					</div>
 					<h2>Tasks</h2>
 					<hr>
 					<div class="progress small-12 large-12 success radius">
@@ -66,7 +66,8 @@
 								<h4>To-do <a href="#" id="addNewTask" data-reveal-id="newTask" data-reveal><i class='fa fa-plus right button small'></i></a></h4>
 								<hr>
 								<div class="tasks" title="To-do">
-									<?PHP foreach ($tasks['todo'] as $task): ?>
+									<?PHP foreach ($tasks['todo'] as $task):
+									?>
 									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
 										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
 											<div class="right tags">
@@ -84,6 +85,10 @@
 										</p>
 										<hr>
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
+										<?php 
+										if (count($task->assigned_to) > 0): ?>
+											<p><i class='fa fa-user'></i> <?PHP foreach($task->assigned_to as $person) echo $person . " "; ?></p>
+										<?PHP endif; ?>
 										<div class="options">
 											<hr>
 											<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small select-tags default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-tags'></i> Edit tags</a>
@@ -115,6 +120,10 @@
 										</p>
 										<hr>
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
+										<?php 
+										if (count($task->assigned_to) > 0): ?>
+											<p><i class='fa fa-user'></i> <?PHP foreach($task->assigned_to as $person) echo $person . " "; ?></p>
+										<?PHP endif; ?>
 										<div class="options">
 											<hr>
 											<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small select-tags default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-tags'></i> Edit tags</a>
@@ -146,6 +155,10 @@
 										</p>
 										<hr>
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
+										<?php 
+										if (count($task->assigned_to) > 0): ?>
+											<p><i class='fa fa-user'></i> <?PHP foreach($task->assigned_to as $person) echo $person . " "; ?></p>
+										<?PHP endif; ?>
 										<div class="options">
 											<hr>
 											<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small select-tags default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-tags'></i> Edit tags</a>
