@@ -62,121 +62,115 @@
 			?>
 			<li>
 				<div class="panel radius">
-					<div class="">
-						<h4><i class="fa fa-user"></i><?PHP echo $user->user_id; ?> <small><?PHP echo $user->label; ?></small></h4>
+					<h3><i class="fa fa-user"></i><?PHP echo $user->user_id; ?></h3>
+					<span class="<?PHP echo $level_effect; ?> label">Level <?PHP echo $user->level . " " . $user->label; ?></span>
+					<div class="progress success radius">
+						<span class="meter experience" style="width: <?PHP echo "$expPercentage%"; ?>"><?PHP echo "$user->experience / $max experience"; ?></span>
 					</div>
-					<p>
-						<span class="<?PHP echo $level_effect; ?> label">Level <?PHP echo $user->level; ?></span>
-					</p>
-					<hr>
-					<p>
-						<em>Experience to next level</em>
-						<div class="progress success radius">
-							<span class="meter experience" style="width: <?PHP echo "$expPercentage%"; ?>"><?PHP echo "$user->experience / $max"; ?></span>
-						</div>
-					</p>
-					<hr>
-					<div class="badges">
-						<?PHP if (rand(0, 100) < 70): ?>
-						<p><i class="fa fa-html5"></i>HTML5 Mastery</p>
-						<?PHP endif; ?>
-						<?PHP if (rand(0, 100) < 50): ?>
-						<p><i class="fa fa-rocket"></i>Rapid Developer</p>
-						<?PHP endif; ?>
-						<?PHP if (rand(0, 100) < 40): ?>
-						<p><i class="fa fa-fire-extinguisher"></i>Bug finder</p>
-						<?PHP endif; ?>
-					</div>
+				</p>
+				<hr>
+				<div class="badges">
+					<h6>Badges earned</h6>
+					<?PHP if (rand(0, 100) < 70): ?>
+					<i class="fa fa-html5"></i>
+					<?PHP endif; ?>
+					<?PHP if (rand(0, 100) < 50): ?>
+					<i class="fa fa-rocket"></i>
+					<?PHP endif; ?>
+					<?PHP if (rand(0, 100) < 40): ?>
+					<i class="fa fa-fire-extinguisher"></i>
+					<?PHP endif; ?>
 				</div>
-			</li>
-			<?PHP endforeach; ?>
-		</ul>
-
-
-
-		<h2>Tasks assignment</h2>
-		<hr>
-		
-		<?PHP
-		$amount = 0;
-		foreach ($assignments as $task){
-			if (count($task->assigned_to) <= 0) continue;
-			
-			$amount++;
-		}
-		if ($amount <= 0):
-			echo "<div class='panel'><p><strong>No finished tasks</strong> so start working!</p></div>";
-		else:
-			?>
-		<table class="large-10 large-offset-1">
-			<thead>
-				<tr>
-					<td width="20%">Task</td>
-					<td width="40%">Assigned to</td>
-					<td width="10%">Deadline</td>
-					<td width="20%">Actions</td>
-				</tr>
-			</thead>
-
-			<?PHP
-			foreach ($assignments as $task):
-				if (count($task->assigned_to) <= 0) continue;
-			?>
-			<tr>
-				<td>
-					<?PHP echo $task->name; ?>
-				</td>
-
-				<td>
-					<?php foreach($task->assigned_to as $person){
-						echo $person . " ";
-					} ?>
-				</td>
-				<td>
-					<?PHP echo $task->deadline_from_now;
-					if ($task->board > 0)
-						echo ' (Finished)';
-					?>
-				</td>
-				<td>
-					<?PHP if($task->board > 0) 
-					echo anchor('tasks', 'Confirm', array('class' => 'button radius small green'));
-					echo ' ';
-					echo anchor('', 'Report', array('class' => 'button radius small alert'));
-					?>
-				</td>
-			</td>
-		</tr>
+			</div>
+		</li>
 		<?PHP endforeach; ?>
-	</table>
-	<?PHP endif; ?>
-	<h2>Recent activity</h2>
+	</ul>
+
+
+
+	<h2>Tasks assignment</h2>
 	<hr>
-	<table class="large-6 large-offset-3">
+
+	<?PHP
+	$amount = 0;
+	foreach ($assignments as $task){
+		if (count($task->assigned_to) <= 0) continue;
+
+		$amount++;
+	}
+	if ($amount <= 0):
+		echo "<div class='panel'><p><strong>No finished tasks</strong> so start working!</p></div>";
+	else:
+		?>
+	<table class="large-10 large-offset-1">
 		<thead>
 			<tr>
-				<td width="30%">Timestamp</td>
-				<td width="70%">Activity</td>
+				<td width="20%">Task</td>
+				<td width="40%">Assigned to</td>
+				<td width="10%">Deadline</td>
+				<td width="20%">Actions</td>
 			</tr>
 		</thead>
 
 		<?PHP
-		if (count($recent_activity) == 0)
-			echo "<p>There were no recent activities. Start working!</p>";
-		else
-			foreach ($recent_activity as $log): ?>
-
+		foreach ($assignments as $task):
+			if (count($task->assigned_to) <= 0) continue;
+		?>
 		<tr>
 			<td>
-				<?PHP echo $log->timestamp; ?>
+				<?PHP echo $task->name; ?>
 			</td>
 
 			<td>
-				<?PHP echo $log->description; ?>
+				<?php foreach($task->assigned_to as $person){
+					echo $person . " ";
+				} ?>
+			</td>
+			<td>
+				<?PHP echo $task->deadline_from_now;
+				if ($task->board > 0)
+					echo ' (Finished)';
+				?>
+			</td>
+			<td>
+				<?PHP if($task->board > 0) 
+				echo anchor('tasks', 'Confirm', array('class' => 'button radius small green'));
+				echo ' ';
+				echo anchor('', 'Report', array('class' => 'button radius small alert'));
+				?>
 			</td>
 		</td>
 	</tr>
 	<?PHP endforeach; ?>
+</table>
+<?PHP endif; ?>
+<h2>Recent activity</h2>
+<hr>
+<table class="large-6 large-offset-3">
+	<thead>
+		<tr>
+			<td width="30%">Timestamp</td>
+			<td width="70%">Activity</td>
+		</tr>
+	</thead>
+
+	<?PHP
+	if (count($recent_activity) == 0)
+		echo "<p>There were no recent activities. Start working!</p>";
+	else
+		foreach ($recent_activity as $log): ?>
+
+	<tr>
+		<td>
+			<?PHP echo $log->timestamp; ?>
+		</td>
+
+		<td>
+			<?PHP echo $log->description; ?>
+		</td>
+	</td>
+</tr>
+<?PHP endforeach; ?>
 </table>
 </div>
 </div>

@@ -183,7 +183,7 @@ span.experience{
 .tag-select{
 	min-width: 200px;
 }
-div.badges > p > i{
+div.badges > i{
 	font-size: 50px;
 	min-width: 75px;
 	margin-bottom: 10px;
