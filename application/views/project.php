@@ -123,7 +123,7 @@
 
 			<td>
 				<?php foreach($task->assigned_to as $person){
-					echo $person . " ";
+					echo "<i class='fa fa-user'></i> " . $person['user_id'] . ' ';
 				} ?>
 			</td>
 			<td>
