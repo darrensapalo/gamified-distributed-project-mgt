@@ -14,6 +14,10 @@ class Account extends CI_Controller {
 		$this->load->view('project');
 	}
 
+	public function settings(){
+		$this->load->view('account_settings');
+	}
+
 	public function experience()
 	{
 		// temporary

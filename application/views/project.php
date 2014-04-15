@@ -32,7 +32,7 @@
 			<h1>Project management <small>redesigned</small></h1>
 			<div class="space"></div>
 			<p>You can earn more experience and level up by adding tasks, moving tasks to their appropriate boards, and accomplishing tasks!</p>
-			<?PHP echo anchor('', 'Start working', array('class' => 'button large')); ?>
+			<?PHP echo anchor('tasks', 'Start working', array('class' => 'button large')); ?>
 		</div>
 
 		<h2>Teammates <small>CSC755M</small></h2>
