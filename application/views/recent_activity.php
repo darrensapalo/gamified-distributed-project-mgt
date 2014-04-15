@@ -30,7 +30,6 @@
 		<div class="panel">
 			<div class="space"></div>
 			<h1>Project management <small>redesigned</small></h1>
-			<div class="space"></div>
 			<p>You can earn more experience and level up by adding tasks, moving tasks to their appropriate boards, and accomplishing tasks!</p>
 			<p><?PHP echo anchor('tasks', 'Start working', array('class' => 'button')); ?> <?PHP echo anchor('', 'Back to dashboard', array('class' => 'button default')); ?></p>
 		</div>

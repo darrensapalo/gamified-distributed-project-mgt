@@ -32,6 +32,7 @@
 			<h1>Project management <small>redesigned</small></h1>
 			<p>You can earn more experience and level up by adding tasks, moving tasks to their appropriate boards, and accomplishing tasks!</p>
 			<?PHP echo anchor('tasks', 'Start working', array('class' => 'button')); ?>
+			<?php echo anchor('log', 'Recent activity', array('class' => 'button default')); ?>
 		</div>
 
 		<h2>Teammates <small>CSC755M</small></h2>
