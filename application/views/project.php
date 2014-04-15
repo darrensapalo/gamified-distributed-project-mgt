@@ -105,9 +105,9 @@
 	<table class="large-10 large-offset-1">
 		<thead>
 			<tr>
-				<td width="20%">Task</td>
-				<td width="40%">Assigned to</td>
-				<td width="10%">Deadline</td>
+				<td width="30%">Task</td>
+				<td width="30%">Assigned to</td>
+				<td width="20%">Deadline</td>
 				<td width="20%">Actions</td>
 			</tr>
 		</thead>
@@ -137,7 +137,7 @@
 
 					echo anchor('tasks', 'Confirm', array('class' => 'button radius small green'));
 					echo ' ';
-					
+
 					echo anchor('tasks', 'Report', array('class' => 'button radius small alert'));
 					echo ' ';	
 				}else{
