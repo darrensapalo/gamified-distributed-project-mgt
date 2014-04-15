@@ -133,10 +133,17 @@
 				?>
 			</td>
 			<td>
-				<?PHP if($task->board > 0) 
-				echo anchor('tasks', 'Confirm', array('class' => 'button radius small green'));
-				echo ' ';
-				echo anchor('', 'Report', array('class' => 'button radius small alert'));
+				<?PHP if($task->board > 0) {
+
+					echo anchor('tasks', 'Confirm', array('class' => 'button radius small green'));
+					echo ' ';
+					
+					echo anchor('tasks', 'Report', array('class' => 'button radius small alert'));
+					echo ' ';	
+				}else{
+					echo anchor('', 'Remind', array('class' => 'button radius small yellow'));	
+				}
+				
 				?>
 			</td>
 		</td>
