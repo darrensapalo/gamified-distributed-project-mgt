@@ -52,11 +52,13 @@ body,html{
 			<aside class="right-off-canvas-menu">
 				<ul class="off-canvas-list">
 					<li><label>Links</label></li>
-					<li><?PHP echo anchor('', 'Class repository'); ?></li>
-					<li><?PHP echo anchor('', 'Website'); ?></li>
-					<li><?PHP echo anchor('', 'Database (MySQL)'); ?></li>
-					<li><?PHP echo anchor('', 'JQuery documentation'); ?></li>
-					<li><?PHP echo anchor('', 'CodeIgniter documentation'); ?></li>
+					<li><?PHP echo anchor('http://www.facebook.com/', 'Class repository'); ?></li>
+					<li><?PHP echo anchor('https://ccs1.dlsu.edu.ph/', 'Course site'); ?></li>
+					<li><?PHP echo anchor('http://www.php.net/manual/en/book.mysql.php', 'Database (MySQL)'); ?></li>
+					<li><?PHP echo anchor('http://api.jquery.com/', 'JQuery documentation'); ?></li>
+					<li><?PHP echo anchor('http://ellislab.com/codeigniter/user-guide/', 'CodeIgniter documentation'); ?></li>
+					<li><?PHP echo anchor('http://schedninja.com/', 'Sched Ninja'); ?></li>
+					
 				</ul>
 			</aside>
 
