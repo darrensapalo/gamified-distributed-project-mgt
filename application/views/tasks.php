@@ -67,7 +67,8 @@ body,html{
 						<h1>Project management <small>redesigned</small></h1>
 						<p>This page allows you to visualize the remaining things that you need to do.</p>
 						<p>
-							<a href="#" id="toggleDesc" class="button small default"><i id='minimax' class='fa fa-minus'></i>Card size</a>
+							<a href="#" id="toggleSize" class="button small default"><i id='minimax' class='fa fa-minus'></i>Card size</a>
+							<a href="#" id="toggleDesc" class="button small default"><i id='descminimax' class='fa fa-minus'></i>Description</a>
 							<a href="#" id="toggleTags" class="button small default"><i class='fa fa-tags'></i>Tiny tags</a>
 							<?PHP echo anchor('', 'Back to dashboard', array('class' => 'small button')); ?>
 						</p>

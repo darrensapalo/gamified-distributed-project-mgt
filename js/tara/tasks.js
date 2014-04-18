@@ -55,10 +55,17 @@ $(function() {
 		}
 	});
 
-$( "#toggleDesc" ).click(function() {
+$( "#toggleSize" ).click(function() {
 	$( ".others" ).slideToggle();
 	$( "#minimax" ).toggleClass( "fa-plus" );
 	$( "#minimax" ).toggleClass( "fa-minus" );
+	$( this ).toggleClass( "disabled" );
+});
+
+$( "#toggleDesc" ).click(function() {
+	$( ".desc" ).slideToggle();
+	$( "#descminimax" ).toggleClass( "fa-plus" );
+	$( "#descminimax" ).toggleClass( "fa-minus" );
 	$( this ).toggleClass( "disabled" );
 });
 
