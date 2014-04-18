@@ -4,6 +4,7 @@ class Log_Model extends CI_Model {
 
 	var $user_id        = "";
 	var $description    = "";
+	var $timestamp 		= "";
 
 	function __construct()
 	{
@@ -30,6 +31,7 @@ class Log_Model extends CI_Model {
 			$description = $this->input->post("description");
 		}
 		$this->load->model('account_model');
+		$this->timestamp = time();
 		$this->user_id = 1;
 		$user = $this->account_model->get($this->user_id);
 		$this->description = $user->user_id . " " . $description;

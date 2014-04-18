@@ -63,7 +63,7 @@ class Tasks extends CI_Controller {
 
 	/* Archives the finished tasks */
 	public function unarchive(){
-		$this->task_model->unarchive_finished();
+		$this->task_model->unarchive();
 	}
 
 	public function tags(){

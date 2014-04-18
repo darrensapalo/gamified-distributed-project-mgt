@@ -57,7 +57,7 @@
 			<?PHP echo $log->log_id; ?>
 		</td>
 		<td>
-			<?PHP echo $log->timestamp; ?>
+			<?PHP echo relativeTime($log->timestamp); //date("Y-m-d H:i:s", $log->timestamp); // relativeTime($log->timestamp); ?>
 		</td>
 
 		<td>

@@ -36,68 +36,72 @@ $(function() {
 
 			
 			var experience = "";
+			var board_color;
 			var exp = 0;
 			if (board == "Done"){
+				board_color = "green";
 				if (rand(2) == 0){
 					exp = rand(10) + 5;
 				}				
 			}else if (rand(5) == 0){
 				var exp = rand(5) + 2;
-				
 			}
+
 
 			if (exp > 0){
 				experience = ( "received <span class='label green'>" + exp + " experience</span>" );
 				log(experience);
 				addExperience(exp, $( this ) );
 			}
-			log("moved task \'" + title + "\' to \'" + board + "\' board.");
+
+			log("moved <span class='label default'>" + title + "</span> to <span class='label " + board_color + "'>" + board + "</span> board.");
 		}
 	});
 
-$( "#toggleSize" ).click(function() {
-	$( ".others" ).slideToggle();
-	$( "#minimax" ).toggleClass( "fa-plus" );
-	$( "#minimax" ).toggleClass( "fa-minus" );
-	$( this ).toggleClass( "disabled" );
-});
-
-$( "#toggleDesc" ).click(function() {
-	$( ".desc" ).slideToggle();
-	$( "#descminimax" ).toggleClass( "fa-plus" );
-	$( "#descminimax" ).toggleClass( "fa-minus" );
-	$( this ).toggleClass( "disabled" );
-});
-
-$( "#archive" ).click(function() {
-	$.post( "tasks/archive", function (data) {
-		window.location.href = '/tara/tasks';
+	$( "#toggleSize" ).click(function() {
+		$( ".others" ).slideToggle();
+		$( "#minimax" ).toggleClass( "fa-plus" );
+		$( "#minimax" ).toggleClass( "fa-minus" );
+		$( this ).toggleClass( "disabled" );
 	});
-});
 
-$( "#toggleDeadline" ).click(function() {
-	$( ".desc" ).toggle("fast");
-	$( this ).toggleClass( "disabled" );
-});
+	$( "#toggleDesc" ).click(function() {
+		$( ".desc" ).slideToggle();
+		$( "#descminimax" ).toggleClass( "fa-plus" );
+		$( "#descminimax" ).toggleClass( "fa-minus" );
+		$( this ).toggleClass( "disabled" );
+	});
 
-$( "#toggleTags" ).click(function() {
-	toggleTags();
-	$( this ).toggleClass( "disabled" );
-});
+	$( "#archive" ).click(function() {
+		$.post( "tasks/archive", function (data) {
+			log("archived all finished tasks.");
+			window.location.href = '/tara/tasks';
+		});
+	});
 
-$( ".select-tags" ).click(function() {
-	var title = $( this ).data("title");
-	$("#change-tag-task-name").text(title);
-	taskID_changeTags = $( this ).data("task-id");
-});
+	$( "#toggleDeadline" ).click(function() {
+		$( ".desc" ).toggle("fast");
+		$( this ).toggleClass( "disabled" );
+	});
+
+	$( "#toggleTags" ).click(function() {
+		toggleTags();
+		$( this ).toggleClass( "disabled" );
+	});
+
+	$( ".select-tags" ).click(function() {
+		var title = $( this ).data("title");
+		$("#change-tag-task-name").text(title);
+		taskID_changeTags = $( this ).data("task-id");
+	});
 
 
-$( ".tag-select" ).click(function() {
-	$( this ).toggleClass( "selected" );
-});
+	$( ".tag-select" ).click(function() {
+		$( this ).toggleClass( "selected" );
+	});
 
-$( "#assignTagsForm" ).submit(function() {
-	event.preventDefault();
+	$( "#assignTagsForm" ).submit(function() {
+		event.preventDefault();
 
 	// Get some values from elements on the page:
 	var $form = $( this ),
@@ -116,8 +120,8 @@ $( "#assignTagsForm" ).submit(function() {
 	});
 });
 
-$( "#submitNewTask" ).submit(function() {
-	event.preventDefault();
+	$( "#submitNewTask" ).submit(function() {
+		event.preventDefault();
 
 	// Get some values from elements on the page:
 	var $form = $( this ),
@@ -136,20 +140,27 @@ $( "#submitNewTask" ).submit(function() {
 	// Put the results in a div
 	posting.done(function( data , e) {
 		$('#newTask').foundation('reveal', 'close');
+		window.location.href = 'tasks';
 	});
 });
 
 
-$( ".task" ).dblclick(function() {
-	$( this ).children( "div[class='options']" ).toggle("fast");
+	$( ".task" ).dblclick(function() {
+		$( this ).children( "div[class='options']" ).toggle("fast");
+	});
+
+	$('.task-input').editable({
+		type: 'text',
+		url: 'tasks/edit'
+	});
+
 });
 
-$('.task-input').editable({
-	type: 'text',
-	url: 'tasks/edit'
+$( "a.button" ).click(function(event){
+	event.preventDefault();
 });
 
-});
+
 
 function toggleTags(){
 	$( ".task-label" ).each(function(index) {

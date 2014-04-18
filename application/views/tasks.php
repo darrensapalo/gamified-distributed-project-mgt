@@ -7,14 +7,14 @@
 	<script src="<?PHP echo base_url(); ?>js/tara/tasks.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/tara/logs.js"></script>
 	<style type="text/css">
-body,html{
-    height:100%;
-    width:100%;
-}
+		body,html{
+		    height:100%;
+		    width:100%;
+		}
 
-.off-canvas-wrap,.inner-wrap{
-    height:100%;   
-}
+		.off-canvas-wrap,.inner-wrap{
+		    height:100%;   
+		}
 	</style>
 </head>
 <body>
@@ -44,20 +44,21 @@ body,html{
 						echo "<li><label>No recent logs</label></li>";
 					else
 						foreach ($logs as $log): ?>
-					<li><label><?PHP echo $log->timestamp; ?></label></li>
+					<li><label><?PHP echo relativeTime($log->timestamp); ?></label></li>
 					<li class='log-info'><?PHP echo $log->description; ?></li>
 					<?PHP endforeach; ?>
 				</ul>
 			</aside>
 			<aside class="right-off-canvas-menu">
 				<ul class="off-canvas-list">
-					<li><label>Links</label></li>
+					<li><label>Project related links</label></li>
 					<li><?PHP echo anchor('http://www.facebook.com/', 'Class repository'); ?></li>
 					<li><?PHP echo anchor('https://ccs1.dlsu.edu.ph/', 'Course site'); ?></li>
 					<li><?PHP echo anchor('http://www.php.net/manual/en/book.mysql.php', 'Database (MySQL)'); ?></li>
 					<li><?PHP echo anchor('http://api.jquery.com/', 'JQuery documentation'); ?></li>
 					<li><?PHP echo anchor('http://ellislab.com/codeigniter/user-guide/', 'CodeIgniter documentation'); ?></li>
 					<li><?PHP echo anchor('http://schedninja.com/', 'Sched Ninja'); ?></li>
+					<li><?PHP echo anchor('tasks', '<i class="fa fa-plus"></i> Add URL'); ?></li>
 					
 				</ul>
 			</aside>
@@ -89,7 +90,7 @@ body,html{
 									<?PHP foreach ($tasks['todo'] as $task):
 									?>
 									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
-										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
+										<h6><a href="#" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
 											<div class="right tags">
 												<?PHP
 												// Display all tags
@@ -101,7 +102,7 @@ body,html{
 										</h6>
 										<div class="others">
 										<p class='desc'>
-											<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-name="desc"><?PHP echo $task->desc; ?></a>
+											<a href="#" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-name="desc"><?PHP echo $task->desc; ?></a>
 										</p>
 										<hr>
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
@@ -128,7 +129,7 @@ body,html{
 								<div class="tasks" title="Doing">
 									<?PHP foreach ($tasks['doing'] as $task): ?>
 									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
-										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
+										<h6><a href="#" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
 											<div class="right tags">
 												<?PHP
 								// Display all tags
@@ -140,7 +141,7 @@ body,html{
 										</h6>
 										<div class="others">
 										<p class='desc'>
-											<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-name="desc"><?PHP echo $task->desc; ?></a>
+											<a href="#" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-name="desc"><?PHP echo $task->desc; ?></a>
 										</p>
 										<hr>
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
@@ -167,7 +168,7 @@ body,html{
 								<div class="tasks" title="Done">
 									<?PHP foreach ($tasks['done'] as $task): ?>
 									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
-										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
+										<h6><a href="#" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
 											<div class="right tags">
 												<?PHP
 												// Display all tags
@@ -179,7 +180,7 @@ body,html{
 										</h6>
 										<div class="others">
 										<p class='desc'>
-											<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-name="desc"><?PHP echo $task->desc; ?></a>
+											<a href="#" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-name="desc"><?PHP echo $task->desc; ?></a>
 										</p>
 										<hr>
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>

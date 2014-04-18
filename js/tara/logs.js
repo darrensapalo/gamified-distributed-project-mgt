@@ -3,7 +3,7 @@ function getUsername(){
 	user_id = readCookie('user_id');
 	if (user_id == "")
 	{
-		$.post("../account/username")
+		$.post("account/username")
 		.done(function(data, e){
 			user_id = data;
 			writeCookie('user_id', data, 1);
