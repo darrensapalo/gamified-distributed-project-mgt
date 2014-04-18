@@ -146,7 +146,7 @@ $( ".task" ).dblclick(function() {
 
 $('.task-input').editable({
 	type: 'text',
-	url: '../tasks/edit'
+	url: 'tasks/edit'
 });
 
 });
