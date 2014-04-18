@@ -13,6 +13,7 @@ function updateTaskToBoard(taskID, board){
 		task_id: taskID,
 		board_id: board
 	}).done(function(data, e) {
+
 	});
 }
 
@@ -36,7 +37,7 @@ $(function() {
 
 			
 			var experience = "";
-			var board_color;
+			var board_color = "";
 			var exp = 0;
 			if (board == "Done"){
 				board_color = "green";

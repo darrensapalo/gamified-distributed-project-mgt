@@ -69,6 +69,8 @@ class Account_Model extends CI_Model {
 		$this->db->where('id', $id);
 		$this->db->update(self::TABLE_NAME, $data); 
 
+		$this->log_model->add("increased to <span class='label'>level {$newLVL}</span>");
+
 		return $this->level($id);
 	}
 
