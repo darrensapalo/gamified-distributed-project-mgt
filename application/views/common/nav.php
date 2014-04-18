@@ -8,17 +8,7 @@
 
 	<section class="top-bar-section">
 		<!-- Right Nav Section -->
-		<ul class="right">
-			<!-- <li class="active"><a href="#">Register</a></li>
-			<li>
-				<?php echo anchor('login', 'Log in'); ?>
-
-			</li> -->
-			<li class="active"><a href="#">darrensapalo</a></li>
-			<li>
-				<?php echo anchor('account/settings', 'Settings'); ?>
-			</li>
-		</ul>
+		<?php $this->load->view('common/login'); ?>
 
 		<!-- Left Nav Section -->
 		<ul class="left">
