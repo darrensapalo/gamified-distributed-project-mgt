@@ -35,17 +35,20 @@ class Task_Model extends CI_Model {
         $this->log_model->add("added a new task '" . $this->name . "'.");
     }
 
-    function get_all()
+    function get_all($archived = false)
     {
         $result = array();
 
+        if ($archived == false)
+            $this->db->where('board < ', 2);
         $tasks = $this->db->get('tasks')->result();
         foreach ($tasks as $task){
 
             // Select the tags
             $this->db->select('tags.name as tags, tags.color as color');
             $this->db->join('tags', 'tags_id = tags.id');
-            $tags = $this->db->get_where('tasks_to_tags', array('task_id' => $task->id))->result_array();
+            $this->db->where('task_id', $task->id);
+            $tags = $this->db->get('tasks_to_tags')->result_array();
 
             // Add to tasks
             $task->tags = $tags;
@@ -54,10 +57,10 @@ class Task_Model extends CI_Model {
         return $result;
     }
 
-    function get_all_by_board()
+    function get_all_by_board($archived = false)
     {
         $result = array('todo' => array(), 'doing' => array(), 'done' => array());
-        $tasks = $this->get_all();
+        $tasks = $this->get_all($archived);
 
 
         foreach($tasks as $task){
@@ -115,6 +118,16 @@ class Task_Model extends CI_Model {
         $this -> db -> join('users', 'users.id = tasks_to_users.user_id');
         $this -> db -> where('task_id', $task_id);
         return $this -> db -> get('tasks_to_users')->result_array();
+    }
+
+    function archive_finished()
+    {
+        return $this->db->query('UPDATE tasks SET `board` = 2 WHERE `board` = 1');
+    }
+
+    function unarchive()
+    {
+        return $this->db->query('UPDATE tasks SET `board` = 1 WHERE `board` >= 2');
     }
 
     /**

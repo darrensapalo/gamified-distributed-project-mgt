@@ -56,6 +56,16 @@ class Tasks extends CI_Controller {
 		# code...
 	}
 
+	/* Archives the finished tasks */
+	public function archive(){
+		$this->task_model->archive_finished();
+	}
+
+	/* Archives the finished tasks */
+	public function unarchive(){
+		$this->task_model->unarchive_finished();
+	}
+
 	public function tags(){
 		if ($this->input->post("tags"))
 			$this->tags_model->updateTags($this->input->post("tags"), $this->input->post("id"));

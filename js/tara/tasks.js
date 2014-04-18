@@ -56,8 +56,16 @@ $(function() {
 	});
 
 $( "#toggleDesc" ).click(function() {
-	$( ".desc" ).toggle("fast");
+	$( ".others" ).slideToggle();
+	$( "#minimax" ).toggleClass( "fa-plus" );
+	$( "#minimax" ).toggleClass( "fa-minus" );
 	$( this ).toggleClass( "disabled" );
+});
+
+$( "#archive" ).click(function() {
+	$.post( "tasks/archive", function (data) {
+		window.location.href = '/tara/tasks';
+	});
 });
 
 $( "#toggleDeadline" ).click(function() {

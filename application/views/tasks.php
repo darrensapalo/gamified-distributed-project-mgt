@@ -66,9 +66,11 @@ body,html{
 						<div class="space"></div>
 						<h1>Project management <small>redesigned</small></h1>
 						<p>This page allows you to visualize the remaining things that you need to do.</p>
-						<a href="#" id="toggleDesc" class="button default"><i class='fa fa-comment'></i>Descriptions</a>
-						<a href="#" id="toggleTags" class="button default"><i class='fa fa-tags'></i>Tiny tags</a>
-						<?PHP echo anchor('', 'Back to dashboard', array('class' => 'button')); ?>
+						<p>
+							<a href="#" id="toggleDesc" class="button small default"><i id='minimax' class='fa fa-minus'></i>Card size</a>
+							<a href="#" id="toggleTags" class="button small default"><i class='fa fa-tags'></i>Tiny tags</a>
+							<?PHP echo anchor('', 'Back to dashboard', array('class' => 'small button')); ?>
+						</p>
 					</div>
 					<h2>Tasks</h2>
 					<hr>
@@ -78,7 +80,7 @@ body,html{
 					<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3">
 						<li>
 							<div class="panel radius board">
-								<h4>To-do <a href="#" id="addNewTask" data-reveal-id="newTask" data-reveal><i class='fa fa-plus right button small'></i></a></h4>
+								<h4>To-do <a href="#" id="addNewTask" data-reveal-id="newTask" class='right button small' data-reveal><i class='fa fa-plus'></i> New task</a></h4>
 								<hr>
 								<div class="tasks" title="To-do">
 									<?PHP foreach ($tasks['todo'] as $task):
@@ -94,7 +96,7 @@ body,html{
 												?>
 											</div>
 										</h6>
-
+										<div class="others">
 										<p class='desc'>
 											<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-name="desc"><?PHP echo $task->desc; ?></a>
 										</p>
@@ -109,6 +111,7 @@ body,html{
 										<div class="options">
 											<hr>
 											<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small select-tags default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-tags'></i> Edit tags</a>
+										</div>
 										</div>
 									</div>
 									<?PHP endforeach; ?>
@@ -132,6 +135,46 @@ body,html{
 												?>
 											</div>
 										</h6>
+										<div class="others">
+										<p class='desc'>
+											<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-name="desc"><?PHP echo $task->desc; ?></a>
+										</p>
+										<hr>
+										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
+										<?php 
+										if (count($task->assigned_to) > 0):?>
+										<?PHP foreach($task->assigned_to as $person): ?>
+										<p><i class='fa fa-user'></i> <?PHP echo $person['user_id'] . " ";?></p>
+										<?PHP endforeach; ?>
+										<?PHP endif; ?>
+										<div class="options">
+											<hr>
+											<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small select-tags default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-tags'></i> Edit tags</a>
+										</div>
+										</div>
+									</div>
+									<?PHP endforeach; ?>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="panel radius board">
+								<h4>Done <a href='#' class='button small right' id='archive'><i class='fa fa-archive'></i> Archive done tasks</a></h4>
+								<hr>
+								<div class="tasks" title="Done">
+									<?PHP foreach ($tasks['done'] as $task): ?>
+									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
+										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
+											<div class="right tags">
+												<?PHP
+												// Display all tags
+												foreach ($task->tags as $tag){
+													echo "<span class='{$tag['color']} label task-label'>{$tag['tags']}</span> ";
+												}
+												?>
+											</div>
+										</h6>
+										<div class="others">
 										<p class='desc'>
 											<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-name="desc"><?PHP echo $task->desc; ?></a>
 										</p>
@@ -148,42 +191,6 @@ body,html{
 											<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small select-tags default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-tags'></i> Edit tags</a>
 										</div>
 									</div>
-									<?PHP endforeach; ?>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="panel radius board">
-								<h4>Done </h4>
-								<hr>
-								<div class="tasks" title="Done">
-									<?PHP foreach ($tasks['done'] as $task): ?>
-									<div class="panel task" title="<?PHP echo $task->name; ?>" data-task-id="<?PHP echo $task->id; ?>">
-										<h6><a href="" class="task-input" data-type="text" data-title="Task name" data-pk="<?PHP echo $task->id; ?>" data-name="name"><?PHP echo $task->name; ?></a>
-											<div class="right tags">
-												<?PHP
-												// Display all tags
-												foreach ($task->tags as $tag){
-													echo "<span class='{$tag['color']} label task-label'>{$tag['tags']}</span> ";
-												}
-												?>
-											</div>
-										</h6>
-										<p class='desc'>
-											<a href="" class="task-input" data-type="textarea" data-title="Task description" data-pk="<?PHP echo $task->id; ?>" data-name="desc"><?PHP echo $task->desc; ?></a>
-										</p>
-										<hr>
-										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
-										<?php 
-										if (count($task->assigned_to) > 0):?>
-										<?PHP foreach($task->assigned_to as $person): ?>
-										<p><i class='fa fa-user'></i> <?PHP echo $person['user_id'] . " ";?></p>
-										<?PHP endforeach; ?>
-										<?PHP endif; ?>
-										<div class="options">
-											<hr>
-											<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small select-tags default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-tags'></i> Edit tags</a>
-										</div>
 									</div>
 									<?PHP endforeach; ?>
 								</div>
