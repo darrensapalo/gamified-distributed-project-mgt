@@ -6,10 +6,21 @@
 	<script src="<?PHP echo base_url(); ?>js/tara/common.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/tara/tasks.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/tara/logs.js"></script>
+	<style type="text/css">
+body,html{
+    height:100%;
+    width:100%;
+}
+
+.off-canvas-wrap,.inner-wrap{
+    height:100%;   
+}
+	</style>
 </head>
 <body>
 	<?PHP $this->load->view('common/tag-selection'); ?>
 	<?PHP $this->load->view('common/new-task'); ?>
+	<div class="page">
 	<div class="off-canvas-wrap" data-offcanvas>
 		<div class="inner-wrap">
 			<nav class="tab-bar">
@@ -91,9 +102,9 @@
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
 										<?php 
 										if (count($task->assigned_to) > 0):?>
-										 	<?PHP foreach($task->assigned_to as $person): ?>
-												<p><i class='fa fa-user'></i> <?PHP echo $person['user_id'] . " ";?></p>
-											<?PHP endforeach; ?>
+										<?PHP foreach($task->assigned_to as $person): ?>
+										<p><i class='fa fa-user'></i> <?PHP echo $person['user_id'] . " ";?></p>
+										<?PHP endforeach; ?>
 										<?PHP endif; ?>
 										<div class="options">
 											<hr>
@@ -128,9 +139,9 @@
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
 										<?php 
 										if (count($task->assigned_to) > 0):?>
-										 	<?PHP foreach($task->assigned_to as $person): ?>
-												<p><i class='fa fa-user'></i> <?PHP echo $person['user_id'] . " ";?></p>
-											<?PHP endforeach; ?>
+										<?PHP foreach($task->assigned_to as $person): ?>
+										<p><i class='fa fa-user'></i> <?PHP echo $person['user_id'] . " ";?></p>
+										<?PHP endforeach; ?>
 										<?PHP endif; ?>
 										<div class="options">
 											<hr>
@@ -165,9 +176,9 @@
 										<p><i class='fa fa-clock-o'></i> <?PHP echo $task->deadline_from_now ?></p>
 										<?php 
 										if (count($task->assigned_to) > 0):?>
-										 	<?PHP foreach($task->assigned_to as $person): ?>
-												<p><i class='fa fa-user'></i> <?PHP echo $person['user_id'] . " ";?></p>
-											<?PHP endforeach; ?>
+										<?PHP foreach($task->assigned_to as $person): ?>
+										<p><i class='fa fa-user'></i> <?PHP echo $person['user_id'] . " ";?></p>
+										<?PHP endforeach; ?>
 										<?PHP endif; ?>
 										<div class="options">
 											<hr>
@@ -182,8 +193,10 @@
 				</div>
 			</section>
 		</div>
-		<script>
-		$(document).foundation();
-		</script>
-	</body>
-	</html>
+	</div>
+	</div>
+	<script>
+	$(document).foundation();
+	</script>
+</body>
+</html>

@@ -34,6 +34,15 @@ class Account extends CI_Controller {
 		$username = $this -> account_model -> get($user_id);
 		$this->load->view('common/single', array('value' => $username->user_id));
 	}
+
+	public function register(){
+
+	}
+
+	public function login()
+	{
+		
+	}
 }
 
 /* End of file account.php */
