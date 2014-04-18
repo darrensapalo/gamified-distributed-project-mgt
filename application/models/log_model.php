@@ -16,7 +16,7 @@ class Log_Model extends CI_Model {
 		return $this->db->get_where(self::TABLE_NAME, array('id' => $id))->row();
 	}
 
-	function get_recent($amount = 5)
+	function get_recent($amount = 25)
 	{
 		$this->db->select("*, logs.id as 'log_id'");
 		$this->db->join("users", "users.id = logs.user_id");

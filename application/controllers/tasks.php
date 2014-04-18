@@ -16,6 +16,13 @@ class Tasks extends CI_Controller {
 		$this->load->view('tasks', $data);
 	}
 
+	public function overview(){
+		$user_id = 1;
+		$data['users'] = $this->account_model->get_all();
+		$data['assignments'] = $this->task_model->get_all_by_person($user_id);
+		$this->load->view('overview', $data);
+	}
+
 	public function add()
 	{
 		$this->task_model->add();
