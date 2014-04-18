@@ -147,7 +147,7 @@ $(function() {
 
 
 	$( ".task" ).dblclick(function() {
-		$( this ).children( "div[class='options']" ).toggle("fast");
+		$( this ).children('.others').children('.options').slideToggle("fast");
 	});
 
 	$('.task-input').editable({
