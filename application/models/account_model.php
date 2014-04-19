@@ -83,6 +83,24 @@ class Account_Model extends CI_Model {
 		return $lvl * $lvl * 5;
 	}
 
+
+	function insert(){
+		$this->email = $this->input->post('email');
+		$this->user_id = $this->input->post('user_id');
+		$this->level = 1;
+		$this->label = "Newbie";
+		$pw = $this->input->post('password');
+		$cpw = $this->input->post('confirm_password');
+
+		if ($pw == $cpw){
+			$this->password = $pw;
+		}
+		else{
+			return false;
+		}
+		return $this->db->insert(self::TABLE_NAME, $this);
+	}
+
 	/**
 	 * Updates the database given a field and the new value
 	 */

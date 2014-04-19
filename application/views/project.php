@@ -36,7 +36,7 @@
 
 		<h2>Teammates <small>CSC755M</small></h2>
 		<hr>
-		<ul class="small-block-grid-1 medium-block-grid-4 large-block-grid-4">
+		<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3">
 			<?PHP foreach ($users as $user):
 			$max = $user->experience_to_next_level;
 			$expPercentage = ($user->experience / $max) * 100;
@@ -71,13 +71,13 @@
 				<div class="badges">
 					<h6>Badges earned</h6>
 					<?PHP if (rand(0, 100) < 70): ?>
-					<i class="fa fa-html5"></i>
+					<p><i class="fa fa-html5"></i> HTML5 Mastery</p>
 					<?PHP endif; ?>
 					<?PHP if (rand(0, 100) < 50): ?>
-					<i class="fa fa-rocket"></i>
+					<p><i class="fa fa-rocket"></i> Rapid Developer</p>
 					<?PHP endif; ?>
 					<?PHP if (rand(0, 100) < 40): ?>
-					<i class="fa fa-fire-extinguisher"></i>
+					<p><i class="fa fa-fire-extinguisher"></i> Bug fixer</p>
 					<?PHP endif; ?>
 				</div>
 			</div>

@@ -201,10 +201,13 @@ div.experience.progress > span{
 .tag-select{
 	min-width: 200px;
 }
-div.badges > i{
-	font-size: 64px;
-	min-width: 75px;
+div.badges > p > i{
+	font-size: 24px;
 	margin-bottom: 10px;
+}
+div.badges > p{
+	text-transform: uppercase;
+	font-size: 14px;
 }
 p.form-description{
 	color: #777;
@@ -212,4 +215,8 @@ p.form-description{
 }
 div#login_drop{
 	min-width: 400px;
+}
+
+nav.top-bar > section.top-bar-section > ul.right > li:last-child{
+	margin-right: 50px;
 }

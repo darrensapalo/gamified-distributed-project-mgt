@@ -35,9 +35,14 @@ class Account extends CI_Controller {
 		$this->load->view('common/single', array('value' => $username->user_id));
 	}
 
-	public function register(){
-		$this->load->helper('form');
-		$this->load->view('account/register');
+	public function register($action = "fill"){
+		if ($action == "new"){
+			$this->account_model->insert();
+			redirect('', 'refresh');
+		}else{
+			$this->load->helper('form');
+			$this->load->view('account/register');	
+		}
 	}
 
 	public function login()
