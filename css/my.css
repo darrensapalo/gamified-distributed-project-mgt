@@ -210,3 +210,6 @@ p.form-description{
 	color: #777;
 	margin-bottom: 20px;
 }
+div#login_drop{
+	min-width: 400px;
+}

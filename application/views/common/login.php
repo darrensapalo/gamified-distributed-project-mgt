@@ -10,13 +10,14 @@
 		<?php echo anchor('account/register', 'Register'); ?>
 	</li>
 	<li>
-		<?php echo anchor('', 'Log in', array('data-dropdown' => 'drop2', 'data-options' => 'align:left')); ?>
-		<div id="drop2" data-dropdown-content class="f-dropdown content">
+		<?php echo anchor('', 'Log in', array('data-dropdown' => 'login_drop', 'data-options' => 'align:left')); ?>
+		<div id="login_drop" data-dropdown-content class="f-dropdown content">
 			<h4>Welcome back!</h4>
 		  <form>
-		  	<input type='text' name='username' placeholder='Username'>
+		  	<input type='text' name='email' placeholder='E-mail'>
 		  	<input type='password' name='password' placeholder='Password'>
-		  	<input type='submit' value='Log in'>
+		  	<input type='submit' value='Log in' class='button small'>
+		  	<?php echo anchor('account/forgot', 'Forgot password?', array('class' => 'button small default')) ?>
 		  </form>
 		</div>
 	</li>
