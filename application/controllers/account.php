@@ -15,7 +15,7 @@ class Account extends CI_Controller {
 	}
 
 	public function settings(){
-		$this->load->view('account_settings');
+		$this->load->view('account/settings');
 	}
 
 	public function experience()
@@ -36,7 +36,8 @@ class Account extends CI_Controller {
 	}
 
 	public function register(){
-
+		$this->load->helper('form');
+		$this->load->view('account/register');
 	}
 
 	public function login()

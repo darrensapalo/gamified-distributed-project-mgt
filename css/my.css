@@ -206,3 +206,7 @@ div.badges > i{
 	min-width: 75px;
 	margin-bottom: 10px;
 }
+p.form-description{
+	color: #777;
+	margin-bottom: 20px;
+}
