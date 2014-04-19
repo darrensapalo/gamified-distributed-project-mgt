@@ -47,7 +47,13 @@ class Account extends CI_Controller {
 
 	public function login()
 	{
-		
+		$email = $this->input->post('email', TRUE);
+		$password = $this->input->post('password', TRUE);
+		if ($email && $password){
+			redirect('tasks', 'refresh');
+		}else{
+			redirect('', 'refresh');
+		}
 	}
 }
 
