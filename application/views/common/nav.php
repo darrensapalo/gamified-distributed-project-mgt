@@ -13,7 +13,7 @@
 		<!-- Left Nav Section -->
 		<ul class="left">
 			<li>
-				<?php echo anchor('tasks/overview', 'Tasks'); ?>
+				<?php echo anchor('tasks/overview', 'Monitor finished tasks'); ?>
 			</li>
 			<li>
 				<?php echo anchor('log', 'Recent Activity'); ?>

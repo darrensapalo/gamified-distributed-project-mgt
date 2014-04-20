@@ -20,6 +20,7 @@
 		<p><i class='fa fa-user'></i> <?PHP echo $person['user_id'] . " ";?></p>
 		<?PHP endforeach; ?>
 		<?PHP endif; ?>
+		<p class='dblclkinfo'><i class='fa fa-info'></i> Double click for more options</p>
 		<div class="options">
 			<hr>
 			<a href="#" data-reveal-id="editDeadline" data-reveal class="button extra-small open-modal default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-clock-o'></i>Deadline</a>

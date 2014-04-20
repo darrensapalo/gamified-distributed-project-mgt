@@ -149,6 +149,7 @@ $(function() {
 
 
 	$( ".task" ).dblclick(function() {
+		$( '.dblclkinfo' ).delay(1200).slideUp();
 		$( this ).children('.others').children('.options').slideToggle("fast");
 	});
 
