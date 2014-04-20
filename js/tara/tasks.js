@@ -1,4 +1,4 @@
-var taskID_changeTags;
+var selectedTaskID;
 
 function updateTaskToBoard(taskID, board){
 	if (board == "To-do"){
@@ -90,10 +90,10 @@ $(function() {
 		$( this ).toggleClass( "disabled" );
 	});
 
-	$( ".select-tags" ).click(function() {
+	$( ".open-modal" ).click(function() {
 		var title = $( this ).data("title");
-		$("#change-tag-task-name").text(title);
-		taskID_changeTags = $( this ).data("task-id");
+		$("h4.taskName").text(title);
+		selectedTaskID = $( this ).data("task-id");
 	});
 
 
@@ -113,11 +113,11 @@ $(function() {
 	var tagsData = [chk[0].checked, chk[1].checked, chk[2].checked, chk[3].checked, chk[4].checked];
 	
 	// Send the data using post
-	var posting = $.post( url, { tags: tagsData, id: taskID_changeTags } );
+	var posting = $.post( url, { tags: tagsData, id: selectedTaskID } );
 
 	// Put the results in a div
 	posting.done(function( data , e) {
-		updateTasks(taskID_changeTags);
+		updateTasks(selectedTaskID);
 	});
 });
 

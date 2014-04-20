@@ -1,5 +1,5 @@
 <div id="assignPerson" class="reveal-modal small" data-reveal>
-	<h4><task id="change-tag-task-name"></task></h4>
+	<h4 class='taskName'></h4>
 	<p>Currently you can only assign one person at a time. Please select the person you want to assign to this task.</p>
 	<div class="space"></div>
 

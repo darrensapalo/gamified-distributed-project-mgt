@@ -22,10 +22,10 @@
 		<?PHP endif; ?>
 		<div class="options">
 			<hr>
-			<a href="#" data-reveal-id="editDeadline" data-reveal class="button extra-small select-tags default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-clock-o'></i>Deadline</a>
-			<a href="#" data-reveal-id="assignPerson" data-reveal class="button extra-small select-tags default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-user'></i> Assign to...</a>
-			<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small select-tags default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-tags'></i></a>
-			<a href="#" data-reveal-id="deleteTask" data-reveal class="button extra-small select-tags default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-trash-o'></i></a>
+			<a href="#" data-reveal-id="editDeadline" data-reveal class="button extra-small open-modal default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-clock-o'></i>Deadline</a>
+			<a href="#" data-reveal-id="assignPerson" data-reveal class="button extra-small open-modal default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-user'></i> Assign to...</a>
+			<a href="#" data-reveal-id="selectTags" data-reveal class="button extra-small open-modal default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-tags'></i></a>
+			<a href="#" data-reveal-id="deleteTask" data-reveal class="button extra-small open-modal default" data-task-id="<?PHP echo $task->id; ?>" data-title="<?PHP echo $task->name; ?>"><i class='fa fa-trash-o'></i></a>
 		</div>
 	</div>
 </div>
