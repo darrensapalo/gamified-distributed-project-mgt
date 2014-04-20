@@ -59,21 +59,26 @@
 					} ?>
 				</td>
 				<td>
-					<?PHP echo $task->deadline_from_now;
-					if ($task->board > 0)
-						echo ' (Finished)';
+					<?PHP 
+					if ($task->deadline_from_now == 'Overdue' && $task->board > 0)
+						echo 'Finished';
+					else{
+						echo $task->deadline_from_now;
+						if ($task->board > 0)
+							echo ' (Finished)';
+					}
 					?>
 				</td>
 				<td>
 					<?PHP if($task->board > 0) {
 
-						echo anchor('tasks', 'Confirm', array('class' => 'button radius small green'));
+						echo anchor('project/monitor/verify', 'Confirm', array('class' => 'button radius small green'));
 						echo ' ';
 
-						echo anchor('tasks', 'Report', array('class' => 'button radius small alert'));
+						echo anchor('project/monitor/report', 'Report', array('class' => 'button radius small alert'));
 						echo ' ';	
 					}else{
-						echo anchor('', 'Remind', array('class' => 'button radius small yellow'));	
+						echo anchor('project/monitor/remind', 'Remind', array('class' => 'button radius small yellow'));	
 					}
 
 					?>

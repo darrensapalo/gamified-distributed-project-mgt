@@ -60,7 +60,7 @@ class Account extends CI_Controller {
 					'logged_in' => TRUE
 					);
 				$this->session->set_userdata($newdata);
-				redirect('project', 'refresh');
+				redirect('tasks', 'refresh');
 			}
 		}else{
 			redirect('project/loginfail', 'refresh');

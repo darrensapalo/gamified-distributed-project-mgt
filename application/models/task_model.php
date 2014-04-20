@@ -88,10 +88,10 @@ class Task_Model extends CI_Model {
         return $result;
     }
 
-    function get_all_by_person()
+    function get_all_by_person($user_id)
     {
         $result = array();
-        $tasks = $this->get_all();
+        $tasks = $this->get_all(TRUE);
 
 
         foreach($tasks as $task){

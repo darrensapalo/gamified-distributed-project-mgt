@@ -30,6 +30,16 @@ class Project extends CI_Controller {
 		$data['error'] = 'Sorry, your experience points are not enough for you to level up!';
 		$this->index($data);
 	}
+	public function monitor($type){
+		if ($type == "remind"){
+			$data['info'] = "The teammate/s assigned were reminded of their task (Not yet implemented).";
+		}else if ($type == "verify"){
+			$data['success'] = "You verified that the task was done. The assigned teammate/s gained experience bonuses and unlocked a new badge (Not yet implemented).";
+		}else if ($type == "report"){
+			$data['error'] = "The assigned teammate/s were successfully reported. There can be various reasons for reporting (such as system abuse, fake task creation and manipulation). However, this feature is not yet implemented.";
+		}
+		$this->index($data);
+	}
 }
 
 /* End of file welcome.php */

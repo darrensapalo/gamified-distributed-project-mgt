@@ -1,28 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<style type="text/css">
-	.task-placeholder {
-		border: 1px dotted black;
-		margin: 0 1em 1em 0;
-		height: 50px;
-	}
-	</style>
 	<?PHP $this->load->view('common/header');  ?>
-	<script>
-	$(function() {
-		$(".desc").hide();
-		
-		$( ".tasks" ).sortable({
-			helper: "clone",
-			placeholder: "ui-state-highlight .task-placeholder ",
-			connectWith: ".tasks"
-		});
-	});
-
-
-
-	</script>
 </head>
 <body>
 	<?PHP $this->load->view('common/nav'); ?>

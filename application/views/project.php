@@ -25,6 +25,18 @@
 			<a href="#" class="close">&times;</a>
 		</div>
 	<?php endif; ?>
+	<?php if (isset($success)): ?>
+		<div data-alert class="alert-box success">
+			<?php echo $success; ?>
+			<a href="#" class="close">&times;</a>
+		</div>
+	<?php endif; ?>
+	<?php if (isset($info)): ?>
+		<div data-alert class="alert-box info radius">
+			<?php echo $info; ?>
+			<a href="#" class="close">&times;</a>
+		</div>
+	<?php endif; ?>
 
 		<h2>Teammates <small>CSC755M</small></h2>
 		<hr>
