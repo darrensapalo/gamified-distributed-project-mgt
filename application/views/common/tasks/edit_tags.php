@@ -1,5 +1,5 @@
 <div id="selectTags" class="reveal-modal small" data-reveal>
-	<h2><task id="change-tag-task-name"></task></h2>
+	<h4><task id="change-tag-task-name"></task></h4>
 	<p>Click which labels you wish to assign to this task.</p>
 	<div class="space"></div>
 

@@ -19,7 +19,10 @@
 	</style>
 </head>
 <body>
-	<?PHP $this->load->view('common/tag-selection'); ?>
+	<?PHP $this->load->view('common/tasks/edit_tags'); ?>
+	<?PHP $this->load->view('common/tasks/edit_deadline'); ?>
+	<?PHP $this->load->view('common/tasks/edit_assignment'); ?>
+	<?PHP $this->load->view('common/tasks/delete_task'); ?>
 	<?PHP $this->load->view('common/new-task'); ?>
 	<div class="page">
 		<div class="off-canvas-wrap" data-offcanvas>
