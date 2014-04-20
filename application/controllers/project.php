@@ -8,11 +8,15 @@ class Project extends CI_Controller {
 	}
 	public function index($data = array())
 	{
-		$user_id = 1;
+		$user_id = $this->session->userdata('id');
 		$data['users'] = $this->account_model->get_all();
 		$data['assignments'] = $this->task_model->get_all_by_person($user_id);
 
 		$this->load->view('project', $data);
+	}
+	public function login(){
+		$data['error'] = 'Please log in before you start working.';
+		$this->index($data);
 	}
 
 	public function loginfail()

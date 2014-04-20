@@ -17,13 +17,13 @@ class Monitor extends CI_Controller {
 
 	public function report($activity_id)
 	{
-		$user_id = 1;
+		$user_id = $this->session->userdata('id');
 		$this->monitor_model->report($activity_id, $user_id);
 	}
 
 	public function confirm($activity_id)
 	{
-		$user_id = 1;
+		$user_id = $this->session->userdata('id');
 		$this->monitor_model->confirm($activity_id, $user_id);
 	}
 }

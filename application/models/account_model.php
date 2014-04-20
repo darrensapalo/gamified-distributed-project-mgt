@@ -56,13 +56,8 @@ class Account_Model extends CI_Model {
 	function gain_experience($id, $value){
 		$currentEXP = $this->experience($id);
 		$newEXP = $currentEXP + $value;
-		$nextLevel = $this->experience_to_next_level($id);
 
-		if ($newEXP > $nextLevel)
-		{
-			$newEXP = $newEXP - $nextLevel;
-			$this->increase_level($id);			
-		}
+		
 
 		$data = array('experience' => $newEXP);
 		$this->db->where('id', $id);
@@ -72,9 +67,21 @@ class Account_Model extends CI_Model {
 	}
 
 	function increase_level($id){
+		$currentEXP = $this->experience($id);
+		$EXPtoNextLevel = $this->experience_to_next_level($id);
+
+		// Fail if the experience is not enough
+		if ($currentEXP < $EXPtoNextLevel)
+			return false;
+
+		// Reduce experience
+		$this->gain_experience($id, - $EXPtoNextLevel);
+		
+		// Increase level
 		$currentLVL = $this->level($id);
 		$newLVL = $currentLVL + 1;
 
+		// Update database
 		$data = array('level' => $newLVL);
 		$this->db->where('id', $id);
 		$this->db->update(self::TABLE_NAME, $data); 
@@ -85,7 +92,10 @@ class Account_Model extends CI_Model {
 	}
 
 	function experience_percentage($id){
-		return ( ($this->experience($id) / $this->experience_to_next_level($id)) * 100) . "%";
+		$value = ($this->experience($id) / $this->experience_to_next_level($id)) * 100;
+		if ($value > 100)
+			$value = 100;
+		return $value . "%";
 	}
 
 	function experience_to_next_level($id){

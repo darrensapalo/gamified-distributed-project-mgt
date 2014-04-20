@@ -11,13 +11,15 @@ class Tasks extends CI_Controller {
 
 	public function index()
 	{
+		if ($this->session->userdata('id') == FALSE || $this->session->userdata('password') == FALSE)
+			redirect('project/login', 'refresh');
 		$data['tasks'] = $this->task_model->get_all_by_board();
 		$data['logs'] = $this->log_model->get_recent();
 		$this->load->view('tasks', $data);
 	}
 
 	public function overview(){
-		$user_id = 1;
+		$user_id = $this->session->userdata('id');
 		$data['users'] = $this->account_model->get_all();
 		$data['assignments'] = $this->task_model->get_all_by_person($user_id);
 		$this->load->view('overview', $data);

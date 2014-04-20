@@ -9,20 +9,6 @@
 	}
 	</style>
 	<?PHP $this->load->view('common/header');  ?>
-	<script>
-	$(function() {
-		$(".desc").hide();
-		
-		$( ".tasks" ).sortable({
-			helper: "clone",
-			placeholder: "ui-state-highlight .task-placeholder ",
-			connectWith: ".tasks"
-		});
-	});
-
-
-
-	</script>
 </head>
 <body>
 	<?PHP $this->load->view('common/nav'); ?>

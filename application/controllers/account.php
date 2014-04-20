@@ -20,8 +20,7 @@ class Account extends CI_Controller {
 
 	public function experience()
 	{
-		// temporary
-		$user_id = 1;
+		$user_id = $this->session->userdata('id');
 		$gained = $this->input->post('gained');
 
 		$current = $this->account_model->gain_experience($user_id, $gained);
@@ -30,7 +29,7 @@ class Account extends CI_Controller {
 	}
 
 	public function username(){
-		$user_id = 1;
+		$user_id = $this->session->userdata('id');
 		$username = $this -> account_model -> get($user_id);
 		$this->load->view('common/single', array('value' => $username->user_id));
 	}
@@ -54,7 +53,8 @@ class Account extends CI_Controller {
 
 				// Set session
 				$newdata = array(
-					'user_id'  => $account->user_id,
+					'id'		=> $account->id,
+					'user_id'   => $account->user_id,
 					'email'     => $email,
 					'password'  => $password,
 					'logged_in' => TRUE
@@ -76,6 +76,19 @@ class Account extends CI_Controller {
 	public function forgot()
 	{
 		$this->load->view('account/forgot');
+	}
+
+	public function levelup()
+	{
+		if ($id = $this->session->userdata('id'))
+		{
+			if ($this->account_model->increase_level($id)){
+				$this->load->view('account/levelup');
+			}
+			else{
+				redirect('tara', 'redirect');
+			}
+		}
 	}
 }
 

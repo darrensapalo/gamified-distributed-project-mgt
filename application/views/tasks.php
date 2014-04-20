@@ -81,7 +81,7 @@
 							</p>
 						</div>
 
-						<h2>Tasks</h2>
+						<h2>Tasks <div class="right"><?php echo anchor('account/levelup', 'Level Up!', array('class' => 'button', 'id' => 'next-level', 'style' => 'display: none')); ?></div></h2>
 						<hr>
 						<!-- Experience bar -->
 						<div class="experience progress small-12 large-12 success radius">
