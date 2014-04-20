@@ -20,9 +20,11 @@ class Account_Model extends CI_Model {
 		return $this->db->get_where(self::TABLE_NAME, array('id' => $id))->row();
 	}
 
-	function get_all()
+	function get_all($order_by = FALSE)
 	{
 		$result = array();
+		if ($order_by)
+			$this->db->order_by($order_by['column'], $order_by['direction']);
 		$users = $this->db->get(self::TABLE_NAME)->result();
 		foreach ($users as $user) {
 			$user->experience_to_next_level = $this->experience_to_next_level($user->id);

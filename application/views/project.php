@@ -51,7 +51,7 @@
 				break;
 			}
 			?>
-			<li>
+			<li class='teammate'>
 				<div class="panel radius">
 					<h4><i class="fa fa-user"></i><?PHP echo $user->user_id; ?></h4>
 					<span class="<?PHP echo $level_effect; ?> label user-label">Level <?PHP echo $user->level . " " . $user->label; ?></span>

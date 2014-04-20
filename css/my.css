@@ -5,9 +5,6 @@
 	min-width: 20px;
 }
 
-.user-label{
-	min-width: 150px;
-}
 
 .default {
 	background-color: #777;
@@ -171,6 +168,7 @@ span.experience{
 
 div.experience.progress {
 	height: 2.5625rem;
+	
 }
 
 div.experience.progress > span{
@@ -201,6 +199,11 @@ div.experience.progress > span{
 .tag-select{
 	min-width: 200px;
 }
+
+.user-label{
+	min-width: 100px;
+}
+
 div.badges > p > i{
 	font-size: 24px;
 	margin-bottom: 10px;
@@ -219,4 +222,8 @@ div#login_drop{
 
 nav.top-bar > section.top-bar-section > ul.right > li:last-child{
 	margin-right: 50px;
+}
+
+li.teammate{
+	
 }

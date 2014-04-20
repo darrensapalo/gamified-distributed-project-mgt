@@ -9,7 +9,7 @@ class Project extends CI_Controller {
 	public function index($data = array())
 	{
 		$user_id = $this->session->userdata('id');
-		$data['users'] = $this->account_model->get_all();
+		$data['users'] = $this->account_model->get_all(array('column' => 'level', 'direction' => 'DESC'));
 		$data['assignments'] = $this->task_model->get_all_by_person($user_id);
 
 		$this->load->view('project', $data);
