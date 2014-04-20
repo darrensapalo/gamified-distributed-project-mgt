@@ -6,6 +6,7 @@
 	<script src="<?PHP echo base_url(); ?>js/tara/common.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/tara/tasks.js"></script>
 	<script src="<?PHP echo base_url(); ?>js/tara/logs.js"></script>
+	<script src="<?PHP echo base_url(); ?>js/tara/experience.js"></script>
 	<style type="text/css">
 	body,html{
 		height:100%;

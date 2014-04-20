@@ -61,14 +61,14 @@
 			?>
 			<li>
 				<div class="panel radius">
-					<h3><i class="fa fa-user"></i><?PHP echo $user->user_id; ?></h3>
+					<h4><i class="fa fa-user"></i><?PHP echo $user->user_id; ?></h4>
 					<span class="<?PHP echo $level_effect; ?> label user-label">Level <?PHP echo $user->level . " " . $user->label; ?></span>
 					<div class="progress success radius">
 						<span class="meter experience" style="width: <?PHP echo "$expPercentage%"; ?>"><?PHP echo "$user->experience / $max experience"; ?></span>
 					</div>
 				</p>
-				<hr>
-				<div class="badges">
+				<div class="badges hide-for-medium-only">
+					<hr>
 					<h6>Badges earned</h6>
 					<?PHP if (rand(0, 100) < 70): ?>
 					<p><i class="fa fa-html5"></i> HTML5 Mastery</p>

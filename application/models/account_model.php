@@ -20,16 +20,16 @@ class Account_Model extends CI_Model {
 		return $this->db->get_where(self::TABLE_NAME, array('id' => $id))->row();
 	}
 
-	    function get_all()
-    {
-    	$result = array();
-        $users = $this->db->get(self::TABLE_NAME)->result();
-        foreach ($users as $user) {
-            $user->experience_to_next_level = $this->experience_to_next_level($user->id);
-            $result[] = $user;
-        }
-        return $result;
-    }
+	function get_all()
+	{
+		$result = array();
+		$users = $this->db->get(self::TABLE_NAME)->result();
+		foreach ($users as $user) {
+			$user->experience_to_next_level = $this->experience_to_next_level($user->id);
+			$result[] = $user;
+		}
+		return $result;
+	}
 
 	function experience($id)
 	{
@@ -41,6 +41,16 @@ class Account_Model extends CI_Model {
 	{
 		$this->db->select('level');
 		return $this->db->get_where(self::TABLE_NAME, array('id' => $id))->row()->level;
+	}
+
+	function login($email, $password, $hash = false){
+		$this->db->where('email', $email);
+		$this->db->where('password', $password);
+		$result = $this->db->get(self::TABLE_NAME);
+		if ($result)
+			return $result->row();
+		else
+			return false;
 	}
 
 	function gain_experience($id, $value){

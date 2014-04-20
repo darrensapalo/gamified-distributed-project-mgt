@@ -2,11 +2,11 @@
 
 class Account extends CI_Controller {
 
-    function __construct()
-    {
-        parent::__construct();
-        $this->load->model('account_model');
-    }
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->model('account_model');
+	}
 
 
 	public function index()
@@ -50,10 +50,27 @@ class Account extends CI_Controller {
 		$email = $this->input->post('email', TRUE);
 		$password = $this->input->post('password', TRUE);
 		if ($email && $password){
-			redirect('tasks', 'refresh');
+			if ($account = $this->account_model->login($email, $password)){
+
+				// Set session
+				$newdata = array(
+					'user_id'  => $account->user_id,
+					'email'     => $email,
+					'password'  => $password,
+					'logged_in' => TRUE
+					);
+				$this->session->set_userdata($newdata);
+				redirect('project', 'refresh');
+			}
 		}else{
-			redirect('', 'refresh');
+			redirect('project/loginfail', 'refresh');
 		}
+	}
+
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect('', 'refresh');
 	}
 }
 
