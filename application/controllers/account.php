@@ -72,6 +72,11 @@ class Account extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect('', 'refresh');
 	}
+
+	public function forgot()
+	{
+		$this->load->view('account/forgot');
+	}
 }
 
 /* End of file account.php */

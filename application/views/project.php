@@ -33,6 +33,12 @@
 			<p>You can earn more experience and level up by adding tasks, moving tasks to their appropriate boards, and accomplishing tasks!</p>
 			<?PHP echo anchor('tasks', 'Start working', array('class' => 'button')); ?>
 		</div>
+		<?php if (isset($error)): ?>
+		<div data-alert class="alert-box warning">
+			<?php echo $error; ?>
+			<a href="#" class="close">&times;</a>
+		</div>
+	<?php endif; ?>
 
 		<h2>Teammates <small>CSC755M</small></h2>
 		<hr>
