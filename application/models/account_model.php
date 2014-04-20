@@ -17,7 +17,10 @@ class Account_Model extends CI_Model {
 	
 	function get($id)
 	{
-		return $this->db->get_where(self::TABLE_NAME, array('id' => $id))->row();
+		if (gettype($id) == "string")
+			return $this->db->get_where(self::TABLE_NAME, array('user_id' => $id))->row();
+		else
+			return $this->db->get_where(self::TABLE_NAME, array('id' => $id))->row();
 	}
 
 	function get_all($order_by = FALSE)
@@ -133,4 +136,13 @@ class Account_Model extends CI_Model {
 		$this -> db -> update(Task_Model::TABLE_NAME, $data);
 	}
 
+	function get_user_list(){
+		$this->db->select('user_id');
+		$users = $this->db->get(self::TABLE_NAME)->result();
+		$result = array();
+		foreach ($users as $user) {
+			$result[] = $user->user_id;
+		}
+		return $result;
+	}
 }

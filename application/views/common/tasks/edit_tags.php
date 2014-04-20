@@ -3,7 +3,7 @@
 	<p>Click which labels you wish to assign to this task.</p>
 	<div class="space"></div>
 
-	<?PHP echo form_open('tasks/tags', array('id' => 'assignTagsForm')); ?>
+	<?PHP echo form_open('tasks/tags', array('id' => 'assignTagsForm', 'class' => 'modal-form'), array('task_id' => '')); ?>
 		<p>
 			<input type='checkbox' name='label-0' id="change-tag-0" value='0'>
 			<span class="orange label tag-select">Changes and revisions</span>

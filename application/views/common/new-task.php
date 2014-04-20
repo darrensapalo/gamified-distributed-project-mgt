@@ -9,7 +9,7 @@
 		<textarea placeholder="Task description" name='desc'></textarea>
 
 		<!-- Deadline -->
-		<input type="text" name="deadline" id="deadline">
+		<input type="text" name="deadline" class='deadline'>
 
 		<!-- Labels -->
 		<p>

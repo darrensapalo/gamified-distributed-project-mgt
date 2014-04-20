@@ -1,7 +1,8 @@
 <div id="deleteTask" class="reveal-modal small" data-reveal>
 	<h4 class='taskName'></h4>
-	<p>Are you sure you wish to delete this task?</p>
-	<div class="space"></div>
-	<?php echo anchor('tasks/delete', 'Permanently delete', array('class' => 'button small red')); ?>
-	<a class="close-reveal-modal" >&#215;</a>
+	<?PHP echo form_open('tasks/archive', array('id' => 'deleteTaskForm', 'class' => 'modal-form'), array('task_id' => '')); ?>
+	<p>Are you sure you wish to remove this task?</p>
+	<input type='submit' class="button radius small red" value='Archive task' />
+</form>
+<a class="close-reveal-modal" >&#215;</a>
 </div>

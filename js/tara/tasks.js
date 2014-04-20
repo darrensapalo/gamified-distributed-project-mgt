@@ -19,7 +19,7 @@ function updateTaskToBoard(taskID, board){
 
 $(function() {
 	$(".options").hide();
-	$('#deadline').datetimepicker();
+	$('.deadline').datetimepicker();
 	toggleTags();
 
 	$( ".tasks" ).sortable({
@@ -74,7 +74,7 @@ $(function() {
 	});
 
 	$( "#archive" ).click(function() {
-		$.post( "tasks/archive", function (data) {
+		$.post( "tasks/archive/all", function (data) {
 			log("archived all finished tasks.");
 			window.location.href = '/tara/tasks';
 		});
@@ -93,7 +93,9 @@ $(function() {
 	$( ".open-modal" ).click(function() {
 		var title = $( this ).data("title");
 		$("h4.taskName").text(title);
+
 		selectedTaskID = $( this ).data("task-id");
+		$(".modal-form").find('input[name=task_id]').val(selectedTaskID);
 	});
 
 

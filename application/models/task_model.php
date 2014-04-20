@@ -64,7 +64,7 @@ class Task_Model extends CI_Model {
 
 
         foreach($tasks as $task){
-            
+
             // Checks remaining time left
             $daysLeft = date('d', strtotime($task->deadline)) - date('d');
             if ($daysLeft < 0){
@@ -125,11 +125,24 @@ class Task_Model extends CI_Model {
         return $this->db->query('UPDATE tasks SET `board` = 2 WHERE `board` = 1');
     }
 
-    function unarchive()
+    function unarchive_finished()
     {
         return $this->db->query('UPDATE tasks SET `board` = 1 WHERE `board` >= 2');
     }
 
+    public function archive($id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update(self::TABLE_NAME, array('board' => 2));
+    }
+
+    public function unarchive($id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update(self::TABLE_NAME, array('board' => 1));
+    }
+
+    
     /**
      * Updates the database given a field and the new value
      */
@@ -139,4 +152,31 @@ class Task_Model extends CI_Model {
 
         $this -> db -> update(Task_Model::TABLE_NAME, $data);
     }
+
+    public function assign()
+    {
+        $task_id = $this -> input -> post('task_id');
+        $user_id = $this -> input -> post('user_id');
+
+        $user = $this -> account_model -> get($user_id);
+
+        $this->db->insert('tasks_to_users', array('task_id' => $task_id, 'user_id' => $user->id));
+    }
+
+    public function unassign($user_id, $task_id)
+    {
+
+    }
+
+    public function update_deadline(){
+        $id = $this->input->post("task_id");
+        $deadline = $this->input->post("deadline");
+        if ($deadline == false) return false;
+        
+        $value = date('Y-m-d H:i:s', strtotime($deadline));
+        $data = array( 'deadline' => $value );
+        $this -> db -> where('id', $id);
+        return $this -> db -> update(Task_Model::TABLE_NAME, $data);
+    }
+
 }

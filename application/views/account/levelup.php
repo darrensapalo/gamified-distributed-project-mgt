@@ -20,7 +20,7 @@
 				Congratulations, you leveled up!
 			</p>
 			<p>
-				<?PHP echo anchor('', 'Back to dashboard', array('class' => 'button small')); ?>
+				<?PHP echo anchor('', 'Back to dashboard', array('class' => 'button')); ?>
 			</p>
 		</div>
 	</div>

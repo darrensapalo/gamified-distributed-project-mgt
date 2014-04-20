@@ -15,6 +15,7 @@ class Tasks extends CI_Controller {
 			redirect('project/login', 'refresh');
 		$data['tasks'] = $this->task_model->get_all_by_board();
 		$data['logs'] = $this->log_model->get_recent();
+		$data['assign_user_list'] = $this->account_model->get_user_list();
 		$this->load->view('tasks', $data);
 	}
 
@@ -48,30 +49,56 @@ class Tasks extends CI_Controller {
 		$this->task_model->update($id, $field, $value);
 	}
 
-	public function delete($id)
-	{
-		# code...
-	}
-
-	public function undelete($id)
-	{
-		# code...
+	/* Archives the finished tasks */
+	public function archive($id = FALSE){
+		$task_id = $this->input->post('task_id');
+		if ($task_id)
+			$this->task_model->archive($task_id);
+		if (gettype($id) == "integer")
+			$this->task_model->archive($id);
+		else if ($id == "all")
+			$this->task_model->archive_finished();
+		redirect('tasks', 'redirect');
 	}
 
 	/* Archives the finished tasks */
-	public function archive(){
-		$this->task_model->archive_finished();
-	}
-
-	/* Archives the finished tasks */
-	public function unarchive(){
-		$this->task_model->unarchive();
+	public function unarchive($id = FALSE){
+		$task_id = $this->input->post('task_id');
+		if ($task_id)
+			$this->task_model->unarchive($task_id);
+		else if (gettype($id) == "integer")
+			$this->task_model->unarchive($id);
+		else if ($id == "all")
+			$this->task_model->unarchive_finished();
+		redirect('tasks', 'redirect');
 	}
 
 	public function tags(){
 		if ($this->input->post("tags"))
 			$this->tags_model->updateTags($this->input->post("tags"), $this->input->post("id"));
 	}
+
+	public function assign()
+	{
+		$this->task_model->assign();
+		redirect('tasks', 'redirect');
+	}
+
+	public function unassign($user_id, $task_id)
+	{
+		$this->task_model->unassign($user_id, $task_id);
+		redirect('tasks', 'redirect');
+	}
+
+	public function deadline()
+	{
+		if ($this->task_model->update_deadline()){
+			redirect('tasks', 'redirect');
+		}else{
+			redirect('tasks', 'redirect');
+		}
+	}
+
 }
 
 /* End of file task.php */

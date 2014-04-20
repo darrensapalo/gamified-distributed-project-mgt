@@ -86,7 +86,7 @@ class Account extends CI_Controller {
 				$this->load->view('account/levelup');
 			}
 			else{
-				redirect('tara', 'redirect');
+				redirect('project/levelupfail', 'redirect');
 			}
 		}
 	}

@@ -24,6 +24,12 @@ class Project extends CI_Controller {
 		$data['error'] = 'Log in failed! The email and the password did not match.';
 		$this->index($data);
 	}
+
+	public function levelupfail()
+	{
+		$data['error'] = 'Sorry, your experience points are not enough for you to level up!';
+		$this->index($data);
+	}
 }
 
 /* End of file welcome.php */
